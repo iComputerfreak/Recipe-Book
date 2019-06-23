@@ -9,11 +9,18 @@
 /* Begin PBXBuildFile section */
 		ABC2416C22BEAA8B001D4B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2416B22BEAA8B001D4B01 /* AppDelegate.swift */; };
 		ABC2416E22BEAA8B001D4B01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2416D22BEAA8B001D4B01 /* SceneDelegate.swift */; };
-		ABC2417022BEAA8B001D4B01 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2416F22BEAA8B001D4B01 /* ContentView.swift */; };
+		ABC2417022BEAA8B001D4B01 /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2416F22BEAA8B001D4B01 /* RecipeListView.swift */; };
 		ABC2417222BEAA8C001D4B01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABC2417122BEAA8C001D4B01 /* Assets.xcassets */; };
 		ABC2417522BEAA8C001D4B01 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABC2417422BEAA8C001D4B01 /* Preview Assets.xcassets */; };
 		ABC2417822BEAA8C001D4B01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABC2417622BEAA8C001D4B01 /* LaunchScreen.storyboard */; };
 		ABC2418322BEAA8D001D4B01 /* Recipe_BookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2418222BEAA8D001D4B01 /* Recipe_BookTests.swift */; };
+		ABC2419622BEAC88001D4B01 /* JFIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2418E22BEAC88001D4B01 /* JFIngredient.swift */; };
+		ABC2419822BEAC88001D4B01 /* JFRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2419022BEAC88001D4B01 /* JFRecipe.swift */; };
+		ABC2419922BEAC88001D4B01 /* JFRecipeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2419122BEAC88001D4B01 /* JFRecipeDataSource.swift */; };
+		ABC2419B22BEAC88001D4B01 /* JFUnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2419322BEAC88001D4B01 /* JFUnitType.swift */; };
+		ABC2419D22BEAC88001D4B01 /* JFPortionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2419522BEAC88001D4B01 /* JFPortionType.swift */; };
+		ABC2419F22BEB08E001D4B01 /* JFUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2419E22BEB08E001D4B01 /* JFUtils.swift */; };
+		ABC241A122BFB19A001D4B01 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC241A022BFB19A001D4B01 /* CollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +37,7 @@
 		ABC2416822BEAA8B001D4B01 /* Recipe Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipe Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC2416B22BEAA8B001D4B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC2416D22BEAA8B001D4B01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ABC2416F22BEAA8B001D4B01 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		ABC2416F22BEAA8B001D4B01 /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
 		ABC2417122BEAA8C001D4B01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABC2417422BEAA8C001D4B01 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ABC2417722BEAA8C001D4B01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +45,13 @@
 		ABC2417E22BEAA8D001D4B01 /* Recipe BookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Recipe BookTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC2418222BEAA8D001D4B01 /* Recipe_BookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe_BookTests.swift; sourceTree = "<group>"; };
 		ABC2418422BEAA8D001D4B01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABC2418E22BEAC88001D4B01 /* JFIngredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFIngredient.swift; sourceTree = "<group>"; };
+		ABC2419022BEAC88001D4B01 /* JFRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFRecipe.swift; sourceTree = "<group>"; };
+		ABC2419122BEAC88001D4B01 /* JFRecipeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFRecipeDataSource.swift; sourceTree = "<group>"; };
+		ABC2419322BEAC88001D4B01 /* JFUnitType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFUnitType.swift; sourceTree = "<group>"; };
+		ABC2419522BEAC88001D4B01 /* JFPortionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFPortionType.swift; sourceTree = "<group>"; };
+		ABC2419E22BEB08E001D4B01 /* JFUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JFUtils.swift; sourceTree = "<group>"; };
+		ABC241A022BFB19A001D4B01 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +93,11 @@
 		ABC2416A22BEAA8B001D4B01 /* Recipe Book */ = {
 			isa = PBXGroup;
 			children = (
+				ABC2419E22BEB08E001D4B01 /* JFUtils.swift */,
+				ABC2418D22BEAC4E001D4B01 /* Models */,
 				ABC2416B22BEAA8B001D4B01 /* AppDelegate.swift */,
 				ABC2416D22BEAA8B001D4B01 /* SceneDelegate.swift */,
-				ABC2416F22BEAA8B001D4B01 /* ContentView.swift */,
+				ABC241A222BFB1A2001D4B01 /* Views */,
 				ABC2417122BEAA8C001D4B01 /* Assets.xcassets */,
 				ABC2417622BEAA8C001D4B01 /* LaunchScreen.storyboard */,
 				ABC2417922BEAA8D001D4B01 /* Info.plist */,
@@ -105,6 +121,27 @@
 				ABC2418422BEAA8D001D4B01 /* Info.plist */,
 			);
 			path = "Recipe BookTests";
+			sourceTree = "<group>";
+		};
+		ABC2418D22BEAC4E001D4B01 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ABC2418E22BEAC88001D4B01 /* JFIngredient.swift */,
+				ABC2419522BEAC88001D4B01 /* JFPortionType.swift */,
+				ABC2419322BEAC88001D4B01 /* JFUnitType.swift */,
+				ABC2419022BEAC88001D4B01 /* JFRecipe.swift */,
+				ABC2419122BEAC88001D4B01 /* JFRecipeDataSource.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ABC241A222BFB1A2001D4B01 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ABC2416F22BEAA8B001D4B01 /* RecipeListView.swift */,
+				ABC241A022BFB19A001D4B01 /* CollectionView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,7 +247,14 @@
 			files = (
 				ABC2416C22BEAA8B001D4B01 /* AppDelegate.swift in Sources */,
 				ABC2416E22BEAA8B001D4B01 /* SceneDelegate.swift in Sources */,
-				ABC2417022BEAA8B001D4B01 /* ContentView.swift in Sources */,
+				ABC2419622BEAC88001D4B01 /* JFIngredient.swift in Sources */,
+				ABC2419B22BEAC88001D4B01 /* JFUnitType.swift in Sources */,
+				ABC2419822BEAC88001D4B01 /* JFRecipe.swift in Sources */,
+				ABC2419922BEAC88001D4B01 /* JFRecipeDataSource.swift in Sources */,
+				ABC241A122BFB19A001D4B01 /* CollectionView.swift in Sources */,
+				ABC2419D22BEAC88001D4B01 /* JFPortionType.swift in Sources */,
+				ABC2417022BEAA8B001D4B01 /* RecipeListView.swift in Sources */,
+				ABC2419F22BEB08E001D4B01 /* JFUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +418,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.JonasFrey.Recipe-Book";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -394,7 +438,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.JonasFrey.Recipe-Book";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

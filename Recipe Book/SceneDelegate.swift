@@ -22,7 +22,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: ContentView())
+            window.rootViewController = UIHostingController(rootView:
+                //RecipeListView()
+                CollectionView<Int, Text>(objects: [1, 2, 3, 4, 5], spacing: 10.0, itemSize: 300.0) { (object: Int) in
+                    return Text(String(describing: object))
+                }
+            )
             self.window = window
             window.makeKeyAndVisible()
         }
