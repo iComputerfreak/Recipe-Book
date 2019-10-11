@@ -8,9 +8,12 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 struct JFUtils {
-    
+    static func randomColor() -> Color {
+        return Color(red: Double.random(in: 0...1), green: Double.random(in: 0...1), blue: Double.random(in: 0...1))
+    }
 }
 
 struct JFLiterals {
@@ -37,9 +40,29 @@ struct Placeholder {
     ]
     
     static var sampleRecipes: [JFRecipe] = [
-        JFRecipe(name: "Apfelkuchen", image: UIImage(named: "apfelkuchen"), steps: ["Step 1", "Step 2", "Step 3\n(Last step)"], ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
-        JFRecipe(name: "Kirschkuchen", image: nil, steps: ["Step 1", "Step 2", "Step 3\n(Last step)"], ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
-        JFRecipe(name: "Cookies", image: nil, steps: ["Step 1", "Step 2", "Step 3\n(Last step)"], ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
+        JFRecipe(name: "Apfelkuchen", image: UIImage(named: "Apfelkuchen"), steps: ["Step 1", "Step 2", "Step 3\n(Last step)\nLine 3...ölak sjflöaks jdflökas jdflökasjdflökasjdflökaj sdflökjas lödfsa dfasdfa slkdfj haöl skejflöaksj efklöajse ölkf jalsök ejfasef\nLine 4\nLine 5"], ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
+        JFRecipe(name: "Kirschkuchen", image: UIImage(named: "Cookies"), steps: ["Step 1", "Step 2", "Step 3\n(Last step)"], ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
+        JFRecipe(name: "Cookies", image: UIImage(named: "Cookies"), steps: ["Step 1", "Step 2", "Step 3\n(Last step)"], ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
     ]
     
 }
+
+extension Array {
+    
+    /// Returns an array that contains the repeated contents of this array
+    ///
+    ///        [1, 2, 3].repeated(n: 2) == [1, 2, 3, 1, 2, 3]
+    /// - Parameter n: The number of times, the content should be repeated
+    func repeated(n: Int) -> [Array.Element] {
+        guard n >= 0 else {
+            return []
+        }
+        var arr = [Array.Element]()
+        for _ in 0..<n {
+            arr.append(contentsOf: self)
+        }
+        return arr
+    }
+}
+
+

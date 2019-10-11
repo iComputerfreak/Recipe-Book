@@ -3,10 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB4BD516234CEBFB003DD217 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4BD515234CEBFB003DD217 /* GridCell.swift */; };
+		AB4BD518234CFE5A003DD217 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4BD517234CFE5A003DD217 /* RecipeDetailView.swift */; };
+		AB84A591234BA82E004A98F0 /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = AB84A590234BA82E004A98F0 /* QGrid */; };
+		AB8F62EA2348D29000AA9A58 /* JFSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AB8F62E92348D29000AA9A58 /* JFSwiftUI */; };
+		AB8F62EC2348D87800AA9A58 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8F62EB2348D87800AA9A58 /* HomeView.swift */; };
+		ABAEAC7C234E336A00FB3644 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEAC7B234E336A00FB3644 /* StepsView.swift */; };
+		ABAEAC7E234E337100FB3644 /* IngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEAC7D234E337100FB3644 /* IngredientsView.swift */; };
+		ABAEAC80234E38C100FB3644 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEAC7F234E38C100FB3644 /* HeaderView.swift */; };
+		ABAEAC82234F59C200FB3644 /* SquareImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEAC81234F59C200FB3644 /* SquareImageView.swift */; };
 		ABC2416C22BEAA8B001D4B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2416B22BEAA8B001D4B01 /* AppDelegate.swift */; };
 		ABC2416E22BEAA8B001D4B01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2416D22BEAA8B001D4B01 /* SceneDelegate.swift */; };
 		ABC2417022BEAA8B001D4B01 /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2416F22BEAA8B001D4B01 /* RecipeListView.swift */; };
@@ -20,7 +29,6 @@
 		ABC2419B22BEAC88001D4B01 /* JFUnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2419322BEAC88001D4B01 /* JFUnitType.swift */; };
 		ABC2419D22BEAC88001D4B01 /* JFPortionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2419522BEAC88001D4B01 /* JFPortionType.swift */; };
 		ABC2419F22BEB08E001D4B01 /* JFUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2419E22BEB08E001D4B01 /* JFUtils.swift */; };
-		ABC241A122BFB19A001D4B01 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC241A022BFB19A001D4B01 /* CollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB4BD515234CEBFB003DD217 /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
+		AB4BD517234CFE5A003DD217 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
+		AB8F62EB2348D87800AA9A58 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		ABAEAC7B234E336A00FB3644 /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
+		ABAEAC7D234E337100FB3644 /* IngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsView.swift; sourceTree = "<group>"; };
+		ABAEAC7F234E38C100FB3644 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		ABAEAC81234F59C200FB3644 /* SquareImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareImageView.swift; sourceTree = "<group>"; };
 		ABC2416822BEAA8B001D4B01 /* Recipe Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipe Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC2416B22BEAA8B001D4B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC2416D22BEAA8B001D4B01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,7 +66,6 @@
 		ABC2419322BEAC88001D4B01 /* JFUnitType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFUnitType.swift; sourceTree = "<group>"; };
 		ABC2419522BEAC88001D4B01 /* JFPortionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFPortionType.swift; sourceTree = "<group>"; };
 		ABC2419E22BEB08E001D4B01 /* JFUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JFUtils.swift; sourceTree = "<group>"; };
-		ABC241A022BFB19A001D4B01 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB84A591234BA82E004A98F0 /* QGrid in Frameworks */,
+				AB8F62EA2348D29000AA9A58 /* JFSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +155,13 @@
 			isa = PBXGroup;
 			children = (
 				ABC2416F22BEAA8B001D4B01 /* RecipeListView.swift */,
-				ABC241A022BFB19A001D4B01 /* CollectionView.swift */,
+				AB8F62EB2348D87800AA9A58 /* HomeView.swift */,
+				AB4BD515234CEBFB003DD217 /* GridCell.swift */,
+				AB4BD517234CFE5A003DD217 /* RecipeDetailView.swift */,
+				ABAEAC7B234E336A00FB3644 /* StepsView.swift */,
+				ABAEAC7D234E337100FB3644 /* IngredientsView.swift */,
+				ABAEAC7F234E38C100FB3644 /* HeaderView.swift */,
+				ABAEAC81234F59C200FB3644 /* SquareImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,6 +182,10 @@
 			dependencies = (
 			);
 			name = "Recipe Book";
+			packageProductDependencies = (
+				AB8F62E92348D29000AA9A58 /* JFSwiftUI */,
+				AB84A590234BA82E004A98F0 /* QGrid */,
+			);
 			productName = "Recipe Book";
 			productReference = ABC2416822BEAA8B001D4B01 /* Recipe Book.app */;
 			productType = "com.apple.product-type.application";
@@ -210,6 +236,10 @@
 				Base,
 			);
 			mainGroup = ABC2415F22BEAA8B001D4B01;
+			packageReferences = (
+				AB8F62E82348D29000AA9A58 /* XCRemoteSwiftPackageReference "JFSwiftUI" */,
+				AB84A58F234BA82E004A98F0 /* XCRemoteSwiftPackageReference "QGrid" */,
+			);
 			productRefGroup = ABC2416922BEAA8B001D4B01 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -246,15 +276,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABC2416C22BEAA8B001D4B01 /* AppDelegate.swift in Sources */,
+				AB4BD516234CEBFB003DD217 /* GridCell.swift in Sources */,
+				ABAEAC7C234E336A00FB3644 /* StepsView.swift in Sources */,
+				ABAEAC7E234E337100FB3644 /* IngredientsView.swift in Sources */,
 				ABC2416E22BEAA8B001D4B01 /* SceneDelegate.swift in Sources */,
 				ABC2419622BEAC88001D4B01 /* JFIngredient.swift in Sources */,
+				AB8F62EC2348D87800AA9A58 /* HomeView.swift in Sources */,
 				ABC2419B22BEAC88001D4B01 /* JFUnitType.swift in Sources */,
 				ABC2419822BEAC88001D4B01 /* JFRecipe.swift in Sources */,
+				AB4BD518234CFE5A003DD217 /* RecipeDetailView.swift in Sources */,
+				ABAEAC80234E38C100FB3644 /* HeaderView.swift in Sources */,
 				ABC2419922BEAC88001D4B01 /* JFRecipeDataSource.swift in Sources */,
-				ABC241A122BFB19A001D4B01 /* CollectionView.swift in Sources */,
 				ABC2419D22BEAC88001D4B01 /* JFPortionType.swift in Sources */,
 				ABC2417022BEAA8B001D4B01 /* RecipeListView.swift in Sources */,
 				ABC2419F22BEB08E001D4B01 /* JFUtils.swift in Sources */,
+				ABAEAC82234F59C200FB3644 /* SquareImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +551,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AB84A58F234BA82E004A98F0 /* XCRemoteSwiftPackageReference "QGrid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Q-Mobile/QGrid.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
+		AB8F62E82348D29000AA9A58 /* XCRemoteSwiftPackageReference "JFSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iComputerfreak/JFSwiftUI.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AB84A590234BA82E004A98F0 /* QGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB84A58F234BA82E004A98F0 /* XCRemoteSwiftPackageReference "QGrid" */;
+			productName = QGrid;
+		};
+		AB8F62E92348D29000AA9A58 /* JFSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AB8F62E82348D29000AA9A58 /* XCRemoteSwiftPackageReference "JFSwiftUI" */;
+			productName = JFSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ABC2416022BEAA8B001D4B01 /* Project object */;
 }

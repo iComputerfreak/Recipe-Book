@@ -7,12 +7,13 @@
 //
 
 import SwiftUI
+import JFSwiftUI
 
 struct RecipeListView : View {
     
     var recipes: [JFRecipe] = Placeholder.sampleRecipes
     
-    static let spacing: Length = 10
+    static let spacing: CGFloat = 10
     static let itemSize: CGFloat = 300
     
     /// Returns the number of items that fit in one row, given the specified spacing and itemSize
@@ -25,7 +26,7 @@ struct RecipeListView : View {
  
     var body: some View {
         VStack(spacing: Self.spacing) {
-            ForEach(recipes.chunked(into: Self.itemsPerRow).identified(by: \.self)) { (recipes: [JFRecipe]) in
+            ForEach(recipes.chunked(into: self.itemsPerRow), id: \.self) { (recipes: [JFRecipe]) in
                 HStack(spacing: Self.spacing) {
                     ForEach(recipes) { (recipe: JFRecipe) in
                         RecipeThumbnail(recipe: recipe)
@@ -48,12 +49,18 @@ struct RecipeThumbnail: View {
                 Image(uiImage: recipe.image!)
                     .frame(width: RecipeListView.itemSize, height: RecipeListView.itemSize, alignment: .center)
                     .scaledToFit()
+                    .aspectRatio(1.0, contentMode: .fit)
+            } else {
+                Image(systemName: "clock")
+                .frame(width: RecipeListView.itemSize, height: RecipeListView.itemSize, alignment: .center)
+                .scaledToFit()
                 .aspectRatio(1.0, contentMode: .fit)
             }
             Text(recipe.name)
         }
-            .padding(10)
-            .border(Color.black, width: 3.0, cornerRadius: 10.0)
+        .padding(10)
+        .border(Color.black, width: 3.0)
+        .cornerRadius(10.0)
     }
 }
 
