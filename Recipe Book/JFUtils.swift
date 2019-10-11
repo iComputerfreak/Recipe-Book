@@ -41,7 +41,7 @@ struct Placeholder {
     
     static var sampleRecipes: [JFRecipe] = [
         JFRecipe(name: "Apfelkuchen", image: UIImage(named: "Apfelkuchen"), steps: ["Step 1", "Step 2", "Step 3\n(Last step)\nLine 3...ölak sjflöaks jdflökas jdflökasjdflökasjdflökaj sdflökjas lödfsa dfasdfa slkdfj haöl skejflöaksj efklöajse ölkf jalsök ejfasef\nLine 4\nLine 5"], ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
-        JFRecipe(name: "Kirschkuchen", image: UIImage(named: "Cookies"), steps: ["Step 1", "Step 2", "Step 3\n(Last step)"], ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
+        JFRecipe(name: "Himbeerkuchen", image: UIImage(named: "Himbeerkuchen"), steps: ["Step 1", "Step 2", "Step 3\n(Last step)"], ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
         JFRecipe(name: "Cookies", image: UIImage(named: "Cookies"), steps: ["Step 1", "Step 2", "Step 3\n(Last step)"], ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
     ]
     
