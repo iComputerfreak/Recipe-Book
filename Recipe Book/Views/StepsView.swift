@@ -12,12 +12,19 @@ struct StepsView: View {
     
     var steps: [String]
     
+    @Environment(\.colorScheme) private var colorScheme
+    
+    private var stepsBackground: Color {
+        let white = 0.9
+        return colorScheme == .light ? Color(white: white) : Color(white: 1 - white)
+    }
+    
     var body: some View {
         
         VStack(alignment: .leading) {
             HeaderView("Steps")
             Divider()
-            VStack(alignment: .leading, spacing: 5) {
+            VStack(alignment: .leading, spacing: 10) {
                 // Steps
                 ForEach(0..<self.steps.count) { i in
                     HStack(alignment: .top) {
@@ -34,7 +41,7 @@ struct StepsView: View {
                             // Expand the background to the whole width
                             Spacer()
                         }
-                        .background(Color(white: 0.9))
+                        .background(self.stepsBackground)
                         .cornerRadius(5)
                     }
                 }

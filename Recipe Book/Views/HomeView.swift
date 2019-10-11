@@ -30,13 +30,13 @@ struct HomeView: View {
                 .buttonStyle(PlainButtonStyle())
             }
                 
-            .onAppear(perform: self.onAppear)
-            .onDisappear(perform: self.onDisappear)
-            .navigationBarTitle("Recipes")
+            .navigationBarTitle("Recipes", displayMode: .inline)
             .navigationBarItems(trailing: Button("Update") {
                 self.dataSource.recipes.removeLast()
             })
         }
+        .onAppear(perform: self.onAppear)
+        .onDisappear(perform: self.onDisappear)
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }

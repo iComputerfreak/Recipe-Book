@@ -22,14 +22,13 @@ struct IngredientsView: View {
         VStack(alignment: .center) {
             HeaderView("Ingredients")
             Divider()
-            Stepper("Für \(recipe.portionAmount) \(recipe.portionType.humanReadable(recipe.portionAmount))",
-                value: $stepperValue, in: 0...100, onEditingChanged: { _ in self.recipe.portionAmount = self.stepperValue })
+            Stepper("Für \(stepperValue) \(recipe.portionType.humanReadable(recipe.portionAmount))", value: $stepperValue, in: 0...100)
                 .fixedSize(horizontal: true, vertical: false)
                 .padding([.top, .bottom], 20)
             VStack(alignment: .leading) {
                 ForEach(self.recipe.ingredients, id: \.self) { (ingredient: JFIngredient) in
                     HStack {
-                        Text(self.amountString(ingredient.amount, unitType: ingredient.unit))
+                        Text(self.amountString(ingredient.amount * Double(self.stepperValue), unitType: ingredient.unit))
                             .frame(minWidth: 120, alignment: .trailing)
                         Text(ingredient.name)
                     }
