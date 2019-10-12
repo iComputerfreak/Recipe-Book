@@ -12,6 +12,7 @@ struct RecipeDetailView: View {
     
     // Reference to the object in the array
     @ObservedObject var recipe: JFRecipe
+    @Environment(\.editMode) private var editMode
         
     func onAppear() {
         
@@ -23,10 +24,11 @@ struct RecipeDetailView: View {
                 // Left View
                 VStack {
                     HeaderView(self.recipe.name)
+                        .environment(\.editMode, self.editMode)
                     Spacer()
                         .frame(height: 50)
-                    StepsView(steps: self.recipe.steps)
-                    Spacer()
+                    StepsView(recipe: self.recipe)
+                        .environment(\.editMode, self.editMode)
                 }
                 // Right View
                 VStack {
@@ -34,13 +36,14 @@ struct RecipeDetailView: View {
                         .padding([.leading, .trailing], 100)
                         .padding([.bottom], 20)
                     IngredientsView(recipe: self.recipe)
-                    //Spacer()
+                        .environment(\.editMode, self.editMode)
                 }
             }
             .padding([.top], 30)
         }
         
         .navigationBarTitle(/*"\(self.recipe.name)"*/ "", displayMode: .inline)
+        .navigationBarItems(trailing: EditButton())
         .onAppear(perform: self.onAppear)
     }
 }

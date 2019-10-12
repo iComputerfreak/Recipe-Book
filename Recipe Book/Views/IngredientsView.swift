@@ -11,11 +11,12 @@ import SwiftUI
 struct IngredientsView: View {
     
     var recipe: JFRecipe
-    @State private var stepperValue: Int = 1
+    @State private var stepperValue: Int
+    @Environment(\.editMode) private var editMode
     
     init(recipe: JFRecipe) {
         self.recipe = recipe
-        self.stepperValue = recipe.portionAmount
+        self._stepperValue = State(initialValue: recipe.portionAmount)
     }
     
     var body: some View {
