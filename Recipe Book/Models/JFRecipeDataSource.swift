@@ -17,6 +17,7 @@ class JFRecipeDataSource: NSObject, ObservableObject {
     @Published var recipes = [JFRecipe]()
     @Published var filter: FilterType?
     @Published var isSorted: Bool = true
+    
     var filteredRecipes: [JFRecipe] {
         var sortedRecipes = recipes
         

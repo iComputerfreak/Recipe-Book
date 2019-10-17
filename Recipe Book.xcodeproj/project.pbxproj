@@ -17,6 +17,7 @@
 		ABAEAC80234E38C100FB3644 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEAC7F234E38C100FB3644 /* HeaderView.swift */; };
 		ABAEAC82234F59C200FB3644 /* SquareImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEAC81234F59C200FB3644 /* SquareImageView.swift */; };
 		ABAEAC84235213C600FB3644 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEAC83235213C600FB3644 /* TextView.swift */; };
+		ABAEAC8623534DB400FB3644 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEAC8523534DB400FB3644 /* RoundedCorners.swift */; };
 		ABC2416C22BEAA8B001D4B01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2416B22BEAA8B001D4B01 /* AppDelegate.swift */; };
 		ABC2416E22BEAA8B001D4B01 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2416D22BEAA8B001D4B01 /* SceneDelegate.swift */; };
 		ABC2417022BEAA8B001D4B01 /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2416F22BEAA8B001D4B01 /* RecipeListView.swift */; };
@@ -30,6 +31,8 @@
 		ABC2419B22BEAC88001D4B01 /* JFUnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2419322BEAC88001D4B01 /* JFUnitType.swift */; };
 		ABC2419D22BEAC88001D4B01 /* JFPortionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2419522BEAC88001D4B01 /* JFPortionType.swift */; };
 		ABC2419F22BEB08E001D4B01 /* JFUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2419E22BEB08E001D4B01 /* JFUtils.swift */; };
+		ABD05E3B23575E41008AAA20 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD05E3A23575E41008AAA20 /* ViewExtension.swift */; };
+		ABD05E3D235760A7008AAA20 /* SaveRetrieveBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD05E3C235760A7008AAA20 /* SaveRetrieveBounds.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,7 @@
 		ABAEAC7F234E38C100FB3644 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		ABAEAC81234F59C200FB3644 /* SquareImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareImageView.swift; sourceTree = "<group>"; };
 		ABAEAC83235213C600FB3644 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		ABAEAC8523534DB400FB3644 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		ABC2416822BEAA8B001D4B01 /* Recipe Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipe Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC2416B22BEAA8B001D4B01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC2416D22BEAA8B001D4B01 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 		ABC2419322BEAC88001D4B01 /* JFUnitType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFUnitType.swift; sourceTree = "<group>"; };
 		ABC2419522BEAC88001D4B01 /* JFPortionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JFPortionType.swift; sourceTree = "<group>"; };
 		ABC2419E22BEB08E001D4B01 /* JFUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JFUtils.swift; sourceTree = "<group>"; };
+		ABD05E3A23575E41008AAA20 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		ABD05E3C235760A7008AAA20 /* SaveRetrieveBounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRetrieveBounds.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,10 +118,12 @@
 			isa = PBXGroup;
 			children = (
 				ABC2419E22BEB08E001D4B01 /* JFUtils.swift */,
-				ABC2418D22BEAC4E001D4B01 /* Models */,
 				ABC2416B22BEAA8B001D4B01 /* AppDelegate.swift */,
 				ABC2416D22BEAA8B001D4B01 /* SceneDelegate.swift */,
+				ABC2418D22BEAC4E001D4B01 /* Models */,
 				ABC241A222BFB1A2001D4B01 /* Views */,
+				ABD05E3A23575E41008AAA20 /* ViewExtension.swift */,
+				ABD05E3C235760A7008AAA20 /* SaveRetrieveBounds.swift */,
 				ABC2417122BEAA8C001D4B01 /* Assets.xcassets */,
 				ABC2417622BEAA8C001D4B01 /* LaunchScreen.storyboard */,
 				ABC2417922BEAA8D001D4B01 /* Info.plist */,
@@ -165,6 +173,7 @@
 				ABAEAC7D234E337100FB3644 /* IngredientsView.swift */,
 				ABAEAC7F234E38C100FB3644 /* HeaderView.swift */,
 				ABAEAC81234F59C200FB3644 /* SquareImageView.swift */,
+				ABAEAC8523534DB400FB3644 /* RoundedCorners.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,9 +300,12 @@
 				ABAEAC80234E38C100FB3644 /* HeaderView.swift in Sources */,
 				ABAEAC84235213C600FB3644 /* TextView.swift in Sources */,
 				ABC2419922BEAC88001D4B01 /* JFRecipeDataSource.swift in Sources */,
+				ABD05E3B23575E41008AAA20 /* ViewExtension.swift in Sources */,
 				ABC2419D22BEAC88001D4B01 /* JFPortionType.swift in Sources */,
+				ABD05E3D235760A7008AAA20 /* SaveRetrieveBounds.swift in Sources */,
 				ABC2417022BEAA8B001D4B01 /* RecipeListView.swift in Sources */,
 				ABC2419F22BEB08E001D4B01 /* JFUtils.swift in Sources */,
+				ABAEAC8623534DB400FB3644 /* RoundedCorners.swift in Sources */,
 				ABAEAC82234F59C200FB3644 /* SquareImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

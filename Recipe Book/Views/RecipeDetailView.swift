@@ -13,9 +13,10 @@ struct RecipeDetailView: View {
     // Reference to the object in the array
     @ObservedObject var recipe: JFRecipe
     @Environment(\.editMode) private var editMode
-        
+    
     func onAppear() {
-        
+        // Globally disable table view separators
+        UITableView.appearance().separatorColor = .clear
     }
     
     var body: some View {
@@ -32,19 +33,56 @@ struct RecipeDetailView: View {
                 }
                 // Right View
                 VStack {
-                    SquareImageView(image: self.recipe.image!)
-                        .padding([.leading, .trailing], 100)
-                        .padding([.bottom], 20)
+                    ZStack {
+                        SquareImageView(image: self.recipe.image!)
+                        // Image Editing Controls
+                        if self.editMode!.wrappedValue.isEditing {
+                            VStack {
+                                Spacer()
+                                HStack {
+                                    Spacer()
+                                    // Take new Photo
+                                    Button(action: {
+                                        print("Take photo")
+                                    }) {
+                                        Image(systemName: "camera")
+                                            .font(.system(size: 32))
+                                    }
+                                        
+                                        // Space between Buttons
+                                        .padding([.trailing], 10)
+                                    
+                                    // Select Photo
+                                    Button(action: {
+                                        print("Select photo")
+                                    }) {
+                                        Image(systemName: "photo")
+                                            .font(.system(size: 32))
+                                    }
+                                    Spacer()
+                                }
+                                .padding(10)
+                                .background(
+                                    RoundedCorners(tl: 0, tr: 0, bl: SquareImageView.cornerRadius, br: SquareImageView.cornerRadius)
+                                        .fill(Color(white: 0.8).opacity(0.8))
+                                )
+                            }
+                        }
+                    }
+                    .padding([.leading, .trailing], 100)
+                    .padding([.bottom], 20)
                     IngredientsView(recipe: self.recipe)
                         .environment(\.editMode, self.editMode)
                 }
             }
             .padding([.top], 30)
         }
-        
+            
         .navigationBarTitle(/*"\(self.recipe.name)"*/ "", displayMode: .inline)
         .navigationBarItems(trailing: EditButton())
         .onAppear(perform: self.onAppear)
+        // Hide the back button while editing
+        .navigationBarBackButtonHidden(self.editMode!.wrappedValue.isEditing)
     }
 }
 

@@ -16,11 +16,7 @@ struct JFUtils {
     }
 }
 
-struct JFLiterals {
-    static let buttonBlue = UIColor(red: 0.0/255.0, green: 122.0/255.0, blue: 255.0/255.0, alpha: 1.0)
-    static let stepNumberColor = UIColor(red: 144.0/255.0, green: 203.0/255.0, blue: 180.0/255.0, alpha: 1.0)
-    static let lightGrayBackgroundColor = UIColor(white: 0.95, alpha: 1.0)
-    
+struct JFLiterals {    
     static let textFont = UIFont(name: "Avenir Next", size: 16)
     
     static let editingViewNibName = "EditingRecipeView"
@@ -39,10 +35,16 @@ struct Placeholder {
         JFIngredient(amount: 0, unit: JFUnitType.none, name: "Salz")
     ]
     
+    static var sampleSteps: [String] = [
+        "Lorem ipsum dolor sit amet",
+        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\nAt vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\nStet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\nNewline"
+    ]
+    
     static var sampleRecipes: [JFRecipe] = [
-        JFRecipe(name: "Apfelkuchen", image: UIImage(named: "Apfelkuchen"), steps: ["Step 1", "Step 2", "Step 3\n(Last step)\nLine 3...ölak sjflöaks jdflökas jdflökasjdflökasjdflökaj sdflökjas lödfsa dfasdfa slkdfj haöl skejflöaksj efklöajse ölkf jalsök ejfasef\nLine 4\nLine 5"], ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
-        JFRecipe(name: "Himbeerkuchen", image: UIImage(named: "Himbeerkuchen"), steps: ["Step 1", "Step 2", "Step 3\n(Last step)"], ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
-        JFRecipe(name: "Cookies", image: UIImage(named: "Cookies"), steps: ["Step 1", "Step 2", "Step 3\n(Last step)"], ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
+        JFRecipe(name: "Apfelkuchen", image: UIImage(named: "Apfelkuchen"), steps: sampleSteps, ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
+        JFRecipe(name: "Himbeerkuchen", image: UIImage(named: "Himbeerkuchen"), steps: sampleSteps, ingredients: sampleIngredients.repeated(n: 10), portionAmount: 1, portionType: .piece),
+        JFRecipe(name: "Cookies", image: UIImage(named: "Cookies"), steps: sampleSteps.repeated(n: 10), ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
     ]
     
 }

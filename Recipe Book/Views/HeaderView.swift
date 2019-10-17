@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// Represents a horizontally centered header text
 struct HeaderView: View {
     
     var header: String

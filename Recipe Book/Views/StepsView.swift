@@ -11,21 +11,19 @@ import SwiftUI
 struct StepsView: View {
     
     var recipe: JFRecipe
-    @State private var steps: [String]
+    @State private var steps: [String] {
+        didSet {
+            // Save the edited steps to the original recipe
+            self.recipe.steps = self.steps
+        }
+    }
     
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.editMode) private var editMode
     
-    private var stepsBackground: Color {
-        let white = 0.9
-        return colorScheme == .light ? Color(white: white) : Color(white: 1 - white)
-    }
-    
     init(recipe: JFRecipe) {
         self.recipe = recipe
         self._steps = State(initialValue: recipe.steps)
-        // Globally disable table view separators
-        UITableView.appearance().separatorColor = .clear
     }
     
     var body: some View {
@@ -34,28 +32,29 @@ struct StepsView: View {
             Divider()
             List {
                 // Steps
-                ForEach(0..<self.recipe.steps.count) { i in
+                ForEach(0..<self.steps.count) { i in
                     HStack(alignment: .top) {
                         // Step Number
                         Text("\(i + 1)")
                             .font(.title)
                             .bold()
                             .underline()
-                            .foregroundColor(Color("Step Color"))
+                            .foregroundColor(Color("StepColor"))
                             .frame(width: 60, height: 35, alignment: .trailing)
                         // Step description
                         if (self.editMode!.wrappedValue.isEditing) {
                             // FIXME: Change to editable
                             //self.stepEditingView(i)
-                            self.stepView(i)
-                                .background(self.stepsBackground)
+                            self.stepView(self.steps[i])
+                                .background(Color("ListBackground"))
                                 .cornerRadius(5)
                         } else {
-                            self.stepView(i)
-                                .background(self.stepsBackground)
+                            self.stepView(self.steps[i])
+                                .background(Color("ListBackground"))
                                 .cornerRadius(5)
                         }
                     }
+                    Text("Step Count: \(self.steps.count)")
                 }
                 
                 // Add Step
@@ -69,16 +68,18 @@ struct StepsView: View {
                     }
                     .foregroundColor(Color.blue)
                     .onTapGesture {
-                        self.steps.append("")
+                        print("Adding step")
+                        self.steps.append("New Step")
+                        print("Steps: \(self.steps.count)")
                     }
                 }
             }
         }
     }
     
-    func stepView(_ i: Int) -> some View {
+    func stepView(_ description: String) -> some View {
         HStack {
-            Text(self.recipe.steps[i])
+            Text(description)
                 .padding(8)
                 .frame(minHeight: 35)
             // Expand the background to the whole width

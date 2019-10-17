@@ -8,9 +8,12 @@
 
 import SwiftUI
 
+/// Represents a view that displays an image cut to a square with rounded corners.
+/// The image scales to fill the bounds.
 struct SquareImageView: View {
     
     var image: UIImage
+    static let cornerRadius: CGFloat = 15.0
     
     var body: some View {
         GeometryReader { geometry in
@@ -20,7 +23,7 @@ struct SquareImageView: View {
                 .frame(width: geometry.size.width)
         }
         .clipped()
-        .cornerRadius(15.0)
+        .cornerRadius(Self.cornerRadius)
         .shadow(radius: 5)
         .aspectRatio(1.0, contentMode: .fit)
     }

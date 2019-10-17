@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+/// Represents a view displaying the list of ingredients of a given recipe
 struct IngredientsView: View {
     
     var recipe: JFRecipe
@@ -23,19 +24,38 @@ struct IngredientsView: View {
         VStack(alignment: .center) {
             HeaderView("Ingredients")
             Divider()
-            Stepper("Für \(stepperValue) \(recipe.portionType.humanReadable(recipe.portionAmount))", value: $stepperValue, in: 0...100)
+            Stepper("For \(stepperValue) \(recipe.portionType.humanReadable(recipe.portionAmount))", value: $stepperValue, in: 1...100)
                 .fixedSize(horizontal: true, vertical: false)
                 .padding([.top, .bottom], 20)
-            VStack(alignment: .leading) {
-                ForEach(self.recipe.ingredients, id: \.self) { (ingredient: JFIngredient) in
-                    HStack {
-                        Text(self.amountString(ingredient.amount * Double(self.stepperValue), unitType: ingredient.unit))
-                            .frame(minWidth: 120, alignment: .trailing)
-                        Text(ingredient.name)
-                    }
+            // FIXME: Using VStack instead of List, because I cannot disable the scrolling in a List and I don't want my ingredients table to be scrollable
+            VStack(alignment: .leading, spacing: 4) {
+                ForEach(0..<self.recipe.ingredients.count) { i in
+                    IngredientsRow(i: i, ingredient: self.recipe.ingredients[i], portionAmount: self.stepperValue)
                 }
             }
+            .padding(.horizontal, 100)
         }
+    }
+}
+
+struct IngredientsRow: View {
+    var i: Int
+    var ingredient: JFIngredient
+    var portionAmount: Int
+    
+    var body: some View {
+        HStack {
+            Text(amountString(ingredient.amount * Double(portionAmount), unitType: ingredient.unit))
+                .frame(minWidth: 120, alignment: .trailing)
+            Text(ingredient.name)
+            Spacer()
+        }
+        .padding(.vertical, 4)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(i % 2 == 0 ? Color(white: 0.9) : Color.clear)
+                .padding(.horizontal, 4)
+        )
     }
     
     func amountString(_ amount: Double, unitType: JFUnitType?) -> String {
@@ -57,7 +77,13 @@ struct IngredientsView: View {
 
 struct IngredientsView_Previews: PreviewProvider {
     static var previews: some View {
-        IngredientsView(recipe: Placeholder.sampleRecipes.first!)
-            .previewLayout(.fixed(width: 400, height: 600))
+        Group {
+            IngredientsRow(i: 0, ingredient: Placeholder.sampleIngredients[0], portionAmount: 1)
+                .previewLayout(.sizeThatFits)
+            IngredientsRow(i: 1, ingredient: Placeholder.sampleIngredients[1], portionAmount: 1)
+                .previewLayout(.sizeThatFits)
+            IngredientsView(recipe: Placeholder.sampleRecipes.first!)
+                .previewLayout(.fixed(width: 400, height: 600))
+        }
     }
 }
