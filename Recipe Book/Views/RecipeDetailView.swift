@@ -10,6 +10,12 @@ import SwiftUI
 
 struct RecipeDetailView: View {
     
+    // Page 133: Edge Insets
+    // Mail: GeometryReader properties -> Get size of cell
+    // Page 135: Prevent extra Dividers after last line
+    // Combine Texts using + for different styles
+    // Divider customization
+    
     // Reference to the object in the array
     @ObservedObject var recipe: JFRecipe
     @Environment(\.editMode) private var editMode

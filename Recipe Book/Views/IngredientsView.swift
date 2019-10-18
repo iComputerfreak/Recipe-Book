@@ -29,12 +29,17 @@ struct IngredientsView: View {
                 .padding([.top, .bottom], 20)
             // FIXME: Using VStack instead of List, because I cannot disable the scrolling in a List and I don't want my ingredients table to be scrollable
             VStack(alignment: .leading, spacing: 4) {
-                ForEach(0..<self.recipe.ingredients.count) { i in
-                    IngredientsRow(i: i, ingredient: self.recipe.ingredients[i], portionAmount: self.stepperValue)
+                ForEach(Array(self.recipe.ingredients.enumerated()), id: \.1.self) { (data: (index: Int, ingredient: JFIngredient)) in
+                    IngredientsRow(i: data.index, ingredient: data.ingredient, portionAmount: self.stepperValue)
                 }
+                .onDelete(perform: self.deleteIngredient(indexSet:))
             }
             .padding(.horizontal, 100)
         }
+    }
+    
+    private func deleteIngredient(indexSet: IndexSet) {
+        self.recipe.ingredients.remove(atOffsets: indexSet)
     }
 }
 
@@ -78,10 +83,11 @@ struct IngredientsRow: View {
 struct IngredientsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            IngredientsRow(i: 0, ingredient: Placeholder.sampleIngredients[0], portionAmount: 1)
-                .previewLayout(.sizeThatFits)
-            IngredientsRow(i: 1, ingredient: Placeholder.sampleIngredients[1], portionAmount: 1)
-                .previewLayout(.sizeThatFits)
+            VStack(spacing: 0) {
+                IngredientsRow(i: 0, ingredient: Placeholder.sampleIngredients[0], portionAmount: 1)
+                IngredientsRow(i: 1, ingredient: Placeholder.sampleIngredients[1], portionAmount: 1)
+            }
+            .previewLayout(.fixed(width: 400, height: 56))
             IngredientsView(recipe: Placeholder.sampleRecipes.first!)
                 .previewLayout(.fixed(width: 400, height: 600))
         }

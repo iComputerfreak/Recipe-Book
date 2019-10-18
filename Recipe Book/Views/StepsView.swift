@@ -14,7 +14,7 @@ struct StepsView: View {
     @State private var steps: [String] {
         didSet {
             // Save the edited steps to the original recipe
-            self.recipe.steps = self.steps
+            self.commitChanges()
         }
     }
     
@@ -27,35 +27,40 @@ struct StepsView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: HorizontalAlignment.leading) {
             HeaderView("Steps")
             Divider()
             List {
                 // Steps
-                ForEach(0..<self.steps.count) { i in
+                // Pair the steps with their indices [(0, "Step 1"), (1, "Step 2"), ...] and use the index as key
+                // This way we can allow equal steps (e.g. when adding 2 steps, both are "") and still can get the index
+                ForEach(Array(self.steps.enumerated()), id: \.0.self) { (data: (index: Int, step: String)) in
                     HStack(alignment: .top) {
                         // Step Number
-                        Text("\(i + 1)")
-                            .font(.title)
-                            .bold()
-                            .underline()
-                            .foregroundColor(Color("StepColor"))
-                            .frame(width: 60, height: 35, alignment: .trailing)
+                        if !self.editMode!.wrappedValue.isEditing {
+                            Text("\(data.index + 1)")
+                                .font(.title)
+                                .bold()
+                                .underline()
+                                .foregroundColor(Color("StepColor"))
+                                .frame(width: 60, height: 35, alignment: .trailing)
+                        }
                         // Step description
                         if (self.editMode!.wrappedValue.isEditing) {
                             // FIXME: Change to editable
                             //self.stepEditingView(i)
-                            self.stepView(self.steps[i])
+                            self.stepView(data.step)
                                 .background(Color("ListBackground"))
                                 .cornerRadius(5)
                         } else {
-                            self.stepView(self.steps[i])
+                            self.stepView(data.step)
                                 .background(Color("ListBackground"))
                                 .cornerRadius(5)
                         }
                     }
-                    Text("Step Count: \(self.steps.count)")
                 }
+                .onDelete(perform: self.deleteStep(indexSet:))
+                .onMove(perform: self.moveStep(from:to:))
                 
                 // Add Step
                 if self.editMode!.wrappedValue.isEditing {
@@ -69,7 +74,7 @@ struct StepsView: View {
                     .foregroundColor(Color.blue)
                     .onTapGesture {
                         print("Adding step")
-                        self.steps.append("New Step")
+                        self.steps.append("")
                         print("Steps: \(self.steps.count)")
                     }
                 }
@@ -91,10 +96,23 @@ struct StepsView: View {
         // TODO: Replace TextView with TextField.lineLimit(), after it has been fixed, or TextView been implemented
         //        TextField("", text: self.$steps[i], onEditingChanged: { _ in }) {
         //            // Commit
-        //            self.recipe.steps = self.steps
+        //            self.commitChanges()
         //        }
         //            .lineLimit(nil)
         TextView(text: self.$steps[i])
+    }
+    
+    func deleteStep(indexSet: IndexSet) {
+        self.steps.remove(atOffsets: indexSet)
+    }
+    
+    func moveStep(from source: IndexSet, to destination: Int) {
+        self.steps.move(fromOffsets: source, toOffset: destination)
+    }
+    
+    /// Saves the changed steps to the original recipe
+    private func commitChanges() {
+        self.recipe.steps = self.steps
     }
 }
 
