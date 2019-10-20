@@ -11,6 +11,6 @@ import Foundation
 /// Represents an ingredient in a recipe
 struct JFIngredient: Codable, Equatable, Hashable {
     var amount: Double
-    var unit: JFUnitType?
+    var unit: JFUnitType
     var name: String
 }

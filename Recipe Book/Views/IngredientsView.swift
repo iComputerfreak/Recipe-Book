@@ -32,14 +32,17 @@ struct IngredientsView: View {
                 .padding([.top, .bottom], 20)
             List {
                 ForEach(Array(self.recipe.ingredients.enumerated()), id: \.0.self) { (data: (index: Int, ingredient: JFIngredient)) in
-                    IngredientsRow(i: data.index, ingredient: data.ingredient, portionAmount: self.stepperValue)
+                    IngredientsRow(data.index, ingredient: data.ingredient, portionAmount: self.stepperValue)
+                        // Pass the edit mode down to the row
+                        .environment(\.editMode, self.editMode)
                         .background(
                             (data.index % 2 == 0 ? Color("ListBackground") : Color.clear)
                                 .cornerRadius(15)
-                                .frame(width: self.cellBounds.width, height: self.cellBounds.height, alignment: .leading)
-                        )
+                                .frame(height: self.cellBounds.height, alignment: .leading)
+                    )
                 }
                 .onDelete(perform: self.deleteIngredient(indexSet:))
+                .onMove(perform: self.moveIngredient(from:to:))
                     // Save the bounds of the list rows into ID 1
                     .listRowBackground(Color.clear.saveBounds(viewId: 1))
             }
@@ -54,19 +57,54 @@ struct IngredientsView: View {
     private func deleteIngredient(indexSet: IndexSet) {
         self.recipe.ingredients.remove(atOffsets: indexSet)
     }
+    
+    private func moveIngredient(from source: IndexSet, to destination: Int) {
+        self.recipe.ingredients.move(fromOffsets: source, toOffset: destination)
+    }
 }
 
 struct IngredientsRow: View {
-    var i: Int
-    var ingredient: JFIngredient
-    var portionAmount: Int
+    let i: Int
+    @State var ingredient: JFIngredient
+    @State var portionAmount: Int
+    
+    // MARK: Editing
+    @State private var amount: Double
+    @State private var unit: JFUnitType
+    @State private var name: String
+    
+    @Environment(\.editMode) private var editMode
+    
+    init(_ i: Int, ingredient: JFIngredient, portionAmount: Int) {
+        self.i = i
+        self._ingredient = State(wrappedValue: ingredient)
+        self._portionAmount = State(wrappedValue: portionAmount)
+        self._amount = State(wrappedValue: ingredient.amount)
+        self._unit = State(wrappedValue: ingredient.unit)
+        self._name = State(wrappedValue: ingredient.name)
+    }
     
     var body: some View {
         HStack {
-            Text(amountString(ingredient.amount * Double(portionAmount), unitType: ingredient.unit))
-                .frame(minWidth: 120, alignment: .trailing)
-            Text(ingredient.name)
-            Spacer()
+            if self.editMode!.wrappedValue.isEditing {
+                TextField("", value: $amount, formatter: NumberFormatter(), onCommit: {
+                    self.ingredient.amount = self.amount
+                })
+                    .labelsHidden()
+                Button(self.ingredient.unit.humanReadable(self.ingredient.amount)) {
+                    // Open popup to ask for other ingredient
+                    print("")
+                }
+                TextField("", text: $name) {
+                    self.ingredient.name = self.name
+                }
+                    .labelsHidden()
+            } else {
+                Text(amountString(ingredient.amount * Double(portionAmount), unitType: ingredient.unit))
+                    .frame(minWidth: 120, alignment: .trailing)
+                Text(ingredient.name)
+                Spacer()
+            }
         }
     }
     
@@ -81,7 +119,7 @@ struct IngredientsRow: View {
         if unitType != nil && unitType != JFUnitType.none {
             // Only if the ingredients list shows "1", use the singular (e.g. 1.00001 would be displayed as "1" -> singular)
             // Empty amount (e.g. "Prise Salz" should also use the singular)
-            amountStr += " " + unitType!.humanReadable((amountStr == "1" || amountStr.isEmpty) ? 1 : 0)
+            amountStr += " " + unitType!.humanReadable(amount)
         }
         return amountStr
     }
@@ -91,8 +129,8 @@ struct IngredientsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             VStack(spacing: 0) {
-                IngredientsRow(i: 0, ingredient: Placeholder.sampleIngredients[0], portionAmount: 1)
-                IngredientsRow(i: 1, ingredient: Placeholder.sampleIngredients[1], portionAmount: 1)
+                IngredientsRow(0, ingredient: Placeholder.sampleIngredients[0], portionAmount: 1)
+                IngredientsRow(1, ingredient: Placeholder.sampleIngredients[1], portionAmount: 1)
             }
             .previewLayout(.fixed(width: 400, height: 56))
             IngredientsView(recipe: Placeholder.sampleRecipes.first!)

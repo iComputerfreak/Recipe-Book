@@ -62,7 +62,23 @@ enum JFUnitType: String, CaseIterable, Codable, Equatable, Hashable {
         }
     }
     
+    /// Returns the correct human readable form
+    /// Important: Also returns the singular form for amount 0!
+    /// - Parameter amount: The amount of the unit
+    /// - Returns: The singular form, if the amount equals 1, the plural form otherwise
     func humanReadable(_ amount: Int) -> String {
         return amount == 1 ? self.humanReadable.singular : self.humanReadable.plural
+    }
+    
+    /// Returns the correct human readable form
+    /// Important: Also returns the singular form for amount 0! 
+    /// - Parameter amount: The amount of the unit
+    /// - Parameter digits: The number of fraction digits to round to, before checking for singular/plural
+    /// - Returns: The singular form, if the amount, rounded to the given number of fraction digits, equals 1, the plural form otherwise
+    func humanReadable(_ amount: Double, digits: Int = 2) -> String {
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = digits
+        let amountStr = formatter.string(from: NSNumber(floatLiteral: amount))!
+        return amountStr == "1" ? self.humanReadable.singular : self.humanReadable.plural
     }
 }
