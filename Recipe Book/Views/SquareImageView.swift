@@ -12,12 +12,13 @@ import SwiftUI
 /// The image scales to fill the bounds.
 struct SquareImageView: View {
     
-    var image: UIImage
+    @Binding var image: UIImage?
+    let defaultSystemImage: String
     static let cornerRadius: CGFloat = 15.0
     
     var body: some View {
         GeometryReader { geometry in
-            Image(uiImage: self.image)
+            Image(uiImage: self.image, defaultSystemImage: self.defaultSystemImage)
                 .resizable()
                 .scaledToFill()
                 .frame(width: geometry.size.width)
@@ -31,6 +32,7 @@ struct SquareImageView: View {
 
 struct SquareImageView_Previews: PreviewProvider {
     static var previews: some View {
-        SquareImageView(image: Placeholder.sampleRecipes.first!.image!).padding()
+        SquareImageView(image: .constant(Placeholder.sampleRecipes.first!.image!), defaultSystemImage: "doc.text")
+            .padding()
     }
 }

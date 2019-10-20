@@ -52,11 +52,3 @@ struct RoundedCorners: Shape {
         return path
     }
 }
-
-
-/*
- USAGE
- 
- .background(RoundedCorners(tl: 0, tr: 30, bl: 30, br: 0).fill(Color.blue))
- 
- */

@@ -33,6 +33,8 @@
 		ABC2419F22BEB08E001D4B01 /* JFUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC2419E22BEB08E001D4B01 /* JFUtils.swift */; };
 		ABD05E3B23575E41008AAA20 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD05E3A23575E41008AAA20 /* ViewExtension.swift */; };
 		ABD05E3D235760A7008AAA20 /* SaveRetrieveBounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD05E3C235760A7008AAA20 /* SaveRetrieveBounds.swift */; };
+		ABD19627235CADA1003EF25A /* RecipeNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD19626235CADA1003EF25A /* RecipeNameView.swift */; };
+		ABD19629235CAE71003EF25A /* IngredientRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD19628235CAE71003EF25A /* IngredientRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		ABC2419E22BEB08E001D4B01 /* JFUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JFUtils.swift; sourceTree = "<group>"; };
 		ABD05E3A23575E41008AAA20 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		ABD05E3C235760A7008AAA20 /* SaveRetrieveBounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRetrieveBounds.swift; sourceTree = "<group>"; };
+		ABD19626235CADA1003EF25A /* RecipeNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNameView.swift; sourceTree = "<group>"; };
+		ABD19628235CAE71003EF25A /* IngredientRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,11 +173,13 @@
 				AB4BD515234CEBFB003DD217 /* GridCell.swift */,
 				AB4BD517234CFE5A003DD217 /* RecipeDetailView.swift */,
 				ABAEAC7B234E336A00FB3644 /* StepsView.swift */,
-				ABAEAC83235213C600FB3644 /* TextView.swift */,
 				ABAEAC7D234E337100FB3644 /* IngredientsView.swift */,
+				ABD19628235CAE71003EF25A /* IngredientRow.swift */,
 				ABAEAC7F234E38C100FB3644 /* HeaderView.swift */,
+				ABD19626235CADA1003EF25A /* RecipeNameView.swift */,
 				ABAEAC81234F59C200FB3644 /* SquareImageView.swift */,
 				ABAEAC8523534DB400FB3644 /* RoundedCorners.swift */,
+				ABAEAC83235213C600FB3644 /* TextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABC2416C22BEAA8B001D4B01 /* AppDelegate.swift in Sources */,
+				ABD19627235CADA1003EF25A /* RecipeNameView.swift in Sources */,
 				AB4BD516234CEBFB003DD217 /* GridCell.swift in Sources */,
 				ABAEAC7C234E336A00FB3644 /* StepsView.swift in Sources */,
 				ABAEAC7E234E337100FB3644 /* IngredientsView.swift in Sources */,
@@ -295,6 +302,7 @@
 				ABC2419622BEAC88001D4B01 /* JFIngredient.swift in Sources */,
 				AB8F62EC2348D87800AA9A58 /* HomeView.swift in Sources */,
 				ABC2419B22BEAC88001D4B01 /* JFUnitType.swift in Sources */,
+				ABD19629235CAE71003EF25A /* IngredientRow.swift in Sources */,
 				ABC2419822BEAC88001D4B01 /* JFRecipe.swift in Sources */,
 				AB4BD518234CFE5A003DD217 /* RecipeDetailView.swift in Sources */,
 				ABAEAC80234E38C100FB3644 /* HeaderView.swift in Sources */,

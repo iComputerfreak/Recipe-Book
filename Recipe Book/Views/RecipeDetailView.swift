@@ -12,13 +12,9 @@ import UIKit
 struct RecipeDetailView: View {
     
     // Page 133: Edge Insets
-    // Mail: GeometryReader properties -> Get size of cell
-    // Page 135: Prevent extra Dividers after last line
     // Combine Texts using + for different styles
-    // Divider customization
     
-    // Reference to the object in the array
-    @ObservedObject var recipe: JFRecipe
+    @EnvironmentObject private var recipe: JFRecipe
     @Environment(\.editMode) private var editMode
     
     func onAppear() {
@@ -36,13 +32,13 @@ struct RecipeDetailView: View {
                         .environment(\.editMode, self.editMode)
                     Spacer()
                         .frame(height: 50)
-                    StepsView(recipe: self.recipe)
+                    StepsView()
                         .environment(\.editMode, self.editMode)
                 }
                 // Right View
                 VStack {
                     ZStack {
-                        SquareImageView(image: self.recipe.image!)
+                        SquareImageView(image: self.$recipe.image, defaultSystemImage: "doc.text")
                         // Image Editing Controls
                         if self.editMode!.wrappedValue.isEditing {
                             VStack {
@@ -51,7 +47,7 @@ struct RecipeDetailView: View {
                                     Spacer()
                                     // Take new Photo
                                     Button(action: {
-                                        print("Take photo")
+                                        //print("Take photo")
                                     }) {
                                         Image(systemName: "camera")
                                             .font(.system(size: 32))
@@ -79,7 +75,7 @@ struct RecipeDetailView: View {
                     }
                     .padding([.leading, .trailing], 100)
                     .padding([.bottom], 20)
-                    IngredientsView(recipe: self.recipe)
+                    IngredientsView()
                         .environment(\.editMode, self.editMode)
                 }
             }
@@ -96,7 +92,8 @@ struct RecipeDetailView: View {
 
 struct RecipeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeDetailView(recipe: Placeholder.sampleRecipes.first!)
+        RecipeDetailView()
+            .environmentObject(Placeholder.sampleRecipes.first!)
         //.previewLayout(.fixed(width: 1112, height: 834))
     }
 }

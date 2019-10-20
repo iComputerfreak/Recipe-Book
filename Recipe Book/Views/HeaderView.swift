@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-/// Represents a horizontally centered header text
+/// Represents a horizontally centered static header text
 struct HeaderView: View {
     
-    var header: String
+    let header: String
     
     init(_ header: String) {
         self.header = header

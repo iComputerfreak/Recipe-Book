@@ -24,7 +24,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             QGrid(self.dataSource.filteredRecipes, columns: 5, vSpacing: 10) { recipe in
-                NavigationLink(destination: RecipeDetailView(recipe: recipe)) {
+                NavigationLink(destination: RecipeDetailView().environmentObject(recipe)) {
                     GridCell(recipe: recipe)
                 }
                 .buttonStyle(PlainButtonStyle())
