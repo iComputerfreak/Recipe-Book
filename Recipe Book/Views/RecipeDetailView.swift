@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct RecipeDetailView: View {
     
@@ -22,7 +23,8 @@ struct RecipeDetailView: View {
     
     func onAppear() {
         // Globally disable table view separators
-        UITableView.appearance().separatorColor = .clear
+        UITableView.appearance().separatorStyle = UITableViewCell.SeparatorStyle.none
+        //UITableView.appearance().isScrollEnabled = false
     }
     
     var body: some View {

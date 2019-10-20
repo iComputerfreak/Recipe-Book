@@ -14,6 +14,17 @@ struct JFUtils {
     static func randomColor() -> Color {
         return Color(red: Double.random(in: 0...1), green: Double.random(in: 0...1), blue: Double.random(in: 0...1))
     }
+    
+    /// Calculates the height a UITableView needs to display it's content.
+    /// Does not respect headers or footers
+    /// - Parameter cellHeight: The height of the UITableViewCells
+    /// - Parameter cellCount: The number of cells to display
+    static func tableHeight(cellHeight: CGFloat, cellCount: Int) -> CGFloat {
+        // A divider has a guessed height of 1/3
+        // FIXME: Formula still not exact
+        // Currently works for up to 30 ingredients
+        return CGFloat(cellCount) * (cellHeight + (1/3) + 0.3)
+    }
 }
 
 struct JFLiterals {    
@@ -53,7 +64,8 @@ extension Array {
     
     /// Returns an array that contains the repeated contents of this array
     ///
-    ///        [1, 2, 3].repeated(n: 2) == [1, 2, 3, 1, 2, 3]
+    ///     [1, 2, 3].repeated(n: 2) == [1, 2, 3, 1, 2, 3]
+    ///     
     /// - Parameter n: The number of times, the content should be repeated
     func repeated(n: Int) -> [Array.Element] {
         guard n >= 0 else {

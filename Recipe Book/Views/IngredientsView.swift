@@ -7,11 +7,14 @@
 //
 
 import SwiftUI
+import UIKit
 
 /// Represents a view displaying the list of ingredients of a given recipe
 struct IngredientsView: View {
     
     var recipe: JFRecipe
+    
+    @State private var cellBounds: CGRect = .zero
     @State private var stepperValue: Int
     @Environment(\.editMode) private var editMode
     
@@ -27,14 +30,24 @@ struct IngredientsView: View {
             Stepper("For \(stepperValue) \(recipe.portionType.humanReadable(recipe.portionAmount))", value: $stepperValue, in: 1...100)
                 .fixedSize(horizontal: true, vertical: false)
                 .padding([.top, .bottom], 20)
-            // FIXME: Using VStack instead of List, because I cannot disable the scrolling in a List and I don't want my ingredients table to be scrollable
-            VStack(alignment: .leading, spacing: 4) {
-                ForEach(Array(self.recipe.ingredients.enumerated()), id: \.1.self) { (data: (index: Int, ingredient: JFIngredient)) in
+            List {
+                ForEach(Array(self.recipe.ingredients.enumerated()), id: \.0.self) { (data: (index: Int, ingredient: JFIngredient)) in
                     IngredientsRow(i: data.index, ingredient: data.ingredient, portionAmount: self.stepperValue)
+                        .background(
+                            (data.index % 2 == 0 ? Color("ListBackground") : Color.clear)
+                                .cornerRadius(15)
+                                .frame(width: self.cellBounds.width, height: self.cellBounds.height, alignment: .leading)
+                        )
                 }
                 .onDelete(perform: self.deleteIngredient(indexSet:))
+                    // Save the bounds of the list rows into ID 1
+                    .listRowBackground(Color.clear.saveBounds(viewId: 1))
             }
-            .padding(.horizontal, 100)
+                // Set the height of the List to perfectly fit its contents
+                .frame(height: JFUtils.tableHeight(cellHeight: self.cellBounds.height, cellCount: self.recipe.ingredients.count))
+                .padding(.horizontal, 50)
+                // Retrieve the saved bounds into the variable
+                .retrieveBounds(viewId: 1, self.$cellBounds)
         }
     }
     
@@ -55,12 +68,6 @@ struct IngredientsRow: View {
             Text(ingredient.name)
             Spacer()
         }
-        .padding(.vertical, 4)
-        .background(
-            RoundedRectangle(cornerRadius: 8)
-                .fill(i % 2 == 0 ? Color(white: 0.9) : Color.clear)
-                .padding(.horizontal, 4)
-        )
     }
     
     func amountString(_ amount: Double, unitType: JFUnitType?) -> String {
@@ -89,7 +96,7 @@ struct IngredientsView_Previews: PreviewProvider {
             }
             .previewLayout(.fixed(width: 400, height: 56))
             IngredientsView(recipe: Placeholder.sampleRecipes.first!)
-                .previewLayout(.fixed(width: 400, height: 600))
+                .previewLayout(.fixed(width: 600, height: 600))
         }
     }
 }
