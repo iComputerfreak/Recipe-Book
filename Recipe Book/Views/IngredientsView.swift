@@ -33,10 +33,14 @@ struct IngredientsView: View {
                             (index % 2 == 0 ? Color("ListBackground") : Color.clear)
                                 .cornerRadius(15)
                                 .frame(height: self.cellBounds.height, alignment: .leading)
-                        )
+                    )
                 }
-                .onDelete(perform: self.deleteIngredient(indexSet:))
-                .onMove(perform: self.moveIngredient(from:to:))
+                .onDelete(perform: { indexSet in
+                    self.recipe.ingredients.remove(atOffsets: indexSet)
+                })
+                .onMove(perform: { source, destination in
+                    self.recipe.ingredients.move(fromOffsets: source, toOffset: destination)
+                })
                     // Save the bounds of the list rows into ID 1
                     .listRowBackground(Color.clear.saveBounds(viewId: 1))
             }
@@ -45,15 +49,22 @@ struct IngredientsView: View {
                 .padding(.horizontal, 50)
                 // Retrieve the saved bounds into the variable
                 .retrieveBounds(viewId: 1, self.$cellBounds)
+            
+            // Add Ingredient
+            if self.editMode!.wrappedValue.isEditing {
+                Button(action: {
+                    print("Adding step")
+                    self.recipe.steps.append("")
+                }, label: {
+                    HStack {
+                        Spacer()
+                        Image(systemName: "plus.circle")
+                        Text("Add Step")
+                        Spacer()
+                    }
+                })
+            }
         }
-    }
-    
-    private func deleteIngredient(indexSet: IndexSet) {
-        self.recipe.ingredients.remove(atOffsets: indexSet)
-    }
-    
-    private func moveIngredient(from source: IndexSet, to destination: Int) {
-        self.recipe.ingredients.move(fromOffsets: source, toOffset: destination)
     }
 }
 

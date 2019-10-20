@@ -79,7 +79,8 @@ struct RecipeDetailView: View {
                         .environment(\.editMode, self.editMode)
                 }
             }
-            .padding([.top], 30)
+            .padding(.top, 30)
+            .padding(.bottom, 80)
         }
             
         .navigationBarTitle(/*"\(self.recipe.name)"*/ "", displayMode: .inline)

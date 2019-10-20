@@ -54,23 +54,20 @@ struct StepsView: View {
                     .onMove(perform: { (source, destination) in
                         self.recipe.steps.move(fromOffsets: source, toOffset: destination)
                     })
-                
-                // Add Step
-                if self.editMode!.wrappedValue.isEditing {
-                    // TODO: Change this back to button or enable the fade-out while tapped
+            }
+            // Add Step
+            if self.editMode!.wrappedValue.isEditing {
+                Button(action: {
+                    print("Adding step")
+                    self.recipe.steps.append("")
+                }, label: {
                     HStack {
                         Spacer()
                         Image(systemName: "plus.circle")
                         Text("Add Step")
                         Spacer()
                     }
-                    .foregroundColor(Color.blue)
-                    .onTapGesture {
-                        print("Adding step")
-                        self.recipe.steps.append("")
-                        print("Steps: \(self.recipe.steps.count)")
-                    }
-                }
+                })
             }
         }
     }
