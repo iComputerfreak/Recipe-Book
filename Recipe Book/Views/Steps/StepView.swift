@@ -16,12 +16,15 @@ struct StepView: View {
     var body: some View {
         HStack {
             // Step Number
+            VStack {
             Text("\(index + 1)")
                 .font(.title)
                 .bold()
                 .underline()
                 .foregroundColor(Color("StepColor"))
                 .frame(width: 60, height: 35, alignment: .trailing)
+                Spacer()
+            }
             // Description
             HStack {
                 Text(description)

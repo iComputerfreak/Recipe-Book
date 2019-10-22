@@ -90,3 +90,23 @@ extension Image {
         }
     }
 }
+
+extension Strideable {
+    /// Returns `self` clamped to the bounds of the given range.
+    /// - Parameter range: The bounds to clamp `self` to
+    /// - Returns:
+    ///     * `nil`, if the range is empty,
+    ///     * `self`, if the range contains `self`,
+    ///     * `self` clamped to the bounds of the range otherwise
+    func clamped(to range: ClosedRange<Self>) -> Self? {
+        guard !range.isEmpty else {
+            return nil
+        }
+        if self < range.lowerBound {
+            return range.lowerBound
+        } else if self >= range.upperBound {
+            return range.upperBound.advanced(by: -1)
+        }
+        return self
+    }
+}

@@ -19,7 +19,7 @@
 		ABAEAC7E234E337100FB3644 /* IngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEAC7D234E337100FB3644 /* IngredientsView.swift */; };
 		ABAEAC80234E38C100FB3644 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEAC7F234E38C100FB3644 /* HeaderView.swift */; };
 		ABAEAC82234F59C200FB3644 /* SquareImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEAC81234F59C200FB3644 /* SquareImageView.swift */; };
-		ABAEAC84235213C600FB3644 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEAC83235213C600FB3644 /* TextView.swift */; };
+		ABAEAC84235213C600FB3644 /* JFTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEAC83235213C600FB3644 /* JFTextView.swift */; };
 		ABAEAC8623534DB400FB3644 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAEAC8523534DB400FB3644 /* RoundedCorners.swift */; };
 		ABBF3EC9235EEC8B004BF962 /* JFEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBF3EC8235EEC8B004BF962 /* JFEditButton.swift */; };
 		ABBF3ECB235EF2C8004BF962 /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBF3ECA235EF2C8004BF962 /* StepView.swift */; };
@@ -65,7 +65,7 @@
 		ABAEAC7D234E337100FB3644 /* IngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsView.swift; sourceTree = "<group>"; };
 		ABAEAC7F234E38C100FB3644 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		ABAEAC81234F59C200FB3644 /* SquareImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareImageView.swift; sourceTree = "<group>"; };
-		ABAEAC83235213C600FB3644 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		ABAEAC83235213C600FB3644 /* JFTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JFTextView.swift; sourceTree = "<group>"; };
 		ABAEAC8523534DB400FB3644 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		ABBF3EC8235EEC8B004BF962 /* JFEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JFEditButton.swift; sourceTree = "<group>"; };
 		ABBF3ECA235EF2C8004BF962 /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
@@ -219,11 +219,11 @@
 		ABC2418D22BEAC4E001D4B01 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				ABC2418E22BEAC88001D4B01 /* JFIngredient.swift */,
+				ABC2419022BEAC88001D4B01 /* JFRecipe.swift */,
 				ABBF3ED5235EF785004BF962 /* JFStep.swift */,
+				ABC2418E22BEAC88001D4B01 /* JFIngredient.swift */,
 				ABC2419522BEAC88001D4B01 /* JFPortion.swift */,
 				ABC2419322BEAC88001D4B01 /* JFUnit.swift */,
-				ABC2419022BEAC88001D4B01 /* JFRecipe.swift */,
 				ABC2419122BEAC88001D4B01 /* JFRecipeDataSource.swift */,
 			);
 			path = Models;
@@ -239,7 +239,7 @@
 				ABBF3ED0235EF59B004BF962 /* Components */,
 				AB74DF96235D0179007EFC09 /* PropertySelectionView.swift */,
 				ABAEAC8523534DB400FB3644 /* RoundedCorners.swift */,
-				ABAEAC83235213C600FB3644 /* TextView.swift */,
+				ABAEAC83235213C600FB3644 /* JFTextView.swift */,
 				ABBF3EC8235EEC8B004BF962 /* JFEditButton.swift */,
 			);
 			path = Views;
@@ -373,7 +373,7 @@
 				ABC2419822BEAC88001D4B01 /* JFRecipe.swift in Sources */,
 				AB4BD518234CFE5A003DD217 /* RecipeDetailView.swift in Sources */,
 				ABAEAC80234E38C100FB3644 /* HeaderView.swift in Sources */,
-				ABAEAC84235213C600FB3644 /* TextView.swift in Sources */,
+				ABAEAC84235213C600FB3644 /* JFTextView.swift in Sources */,
 				ABC2419922BEAC88001D4B01 /* JFRecipeDataSource.swift in Sources */,
 				ABD05E3B23575E41008AAA20 /* ViewExtension.swift in Sources */,
 				ABC2419D22BEAC88001D4B01 /* JFPortion.swift in Sources */,

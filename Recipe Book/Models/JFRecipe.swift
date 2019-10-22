@@ -32,7 +32,7 @@ class JFRecipe: Identifiable, Codable, ObservableObject {
     @Published var tags: [String]
     
     /// The creation steps of the recipe
-    @Published var steps: [String]
+    @Published var steps: [JFStep]
     /// The list of ingredients for the recipe
     @Published var ingredients: [JFIngredient]
     
@@ -43,7 +43,7 @@ class JFRecipe: Identifiable, Codable, ObservableObject {
         self.init(name: "", image: nil, steps: [], ingredients: [], portionAmount: 1, portionType: .serving)
     }
     
-    init(name: String, image: UIImage?, steps: [String], ingredients: [JFIngredient], portionAmount: Int, portionType: JFPortion, recipeID: UUID = UUID(), category: String? = nil, tags: [String] = []) {
+    init(name: String, image: UIImage?, steps: [JFStep], ingredients: [JFIngredient], portionAmount: Int, portionType: JFPortion, recipeID: UUID = UUID(), category: String? = nil, tags: [String] = []) {
         self.name = name
         self.image = image
         self.steps = steps
@@ -75,7 +75,7 @@ class JFRecipe: Identifiable, Codable, ObservableObject {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.name = try container.decode(String.self, forKey: .name)
         self.id = try container.decode(UUID.self, forKey: .id)
-        self.steps = try container.decode([String].self, forKey: .steps)
+        self.steps = try container.decode([JFStep].self, forKey: .steps)
         self.ingredients = try container.decode([JFIngredient].self, forKey: .ingredients)
         self.portionAmount = try container.decode(Int.self, forKey: .portionAmount)
         self.portionType = try container.decode(JFPortion.self, forKey: .portionType)

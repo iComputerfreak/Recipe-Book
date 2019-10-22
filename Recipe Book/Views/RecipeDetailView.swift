@@ -11,8 +11,31 @@ import UIKit
 
 struct RecipeDetailView: View {
     
-    // Page 133: Edge Insets
-    // Combine Texts using + for different styles
+    /*
+     Current Workarounds:
+     * Editing Steps (no TextView or multiline TextField)
+     * Custom EditButton to execute code on editMode change
+     * Calculating ingredients List size and setting it manually (instead of letting the List grow as it needs to)
+     * Using Popover instead of ActionSheet (maybe can be left like this)
+     
+     */
+    
+    /*
+     Known Bugs:
+     * Recipe Unit is using onTapGesture instead of Button, because it's in a List
+     * Recipe Unit "Button" is registering presses that are a bit more far away (e.g. when tapping the amount field)
+     * Add Step Button is pushed down because the List is expanding
+     
+     */
+    
+    /*
+     TODO:
+     * Save images in separate directory (or better into CoreData/iCloud Data)
+     * Create StepEditingView
+     * Convert Units to match the highest one
+     * Highlight ingredients in step descriptions
+     
+     */
     
     @EnvironmentObject private var recipe: JFRecipe
     @Environment(\.editMode) private var editMode
@@ -40,7 +63,7 @@ struct RecipeDetailView: View {
                     ZStack {
                         SquareImageView(image: self.$recipe.image, defaultSystemImage: "doc.text")
                         // Image Editing Controls
-                        if self.editMode!.wrappedValue.isEditing {
+                        if self.editMode?.wrappedValue.isEditing ?? false {
                             VStack {
                                 Spacer()
                                 HStack {
@@ -84,7 +107,6 @@ struct RecipeDetailView: View {
         }
             
         .navigationBarTitle(/*"\(self.recipe.name)"*/ "", displayMode: .inline)
-            // TODO: Check if EditButton changes the environment variable correctly
         .navigationBarItems(trailing: JFEditButton() { newState in
             if newState == .active {
                 // Just entered edit mode
@@ -93,10 +115,10 @@ struct RecipeDetailView: View {
                 // Remove the empty ingredients
                 self.recipe.ingredients.removeAll { $0.name.isEmpty && $0.amount.isZero && $0.unit == .none }
             }
-        }) // TODO: Maybe insert self.editMode into JFEditButton
+        })
         .onAppear(perform: self.onAppear)
         // Hide the back button while editing
-        .navigationBarBackButtonHidden(self.editMode!.wrappedValue.isEditing)
+        .navigationBarBackButtonHidden(self.editMode?.wrappedValue.isEditing ?? false)
     }
 }
 

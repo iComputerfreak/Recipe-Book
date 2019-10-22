@@ -8,10 +8,6 @@
 
 import SwiftUI
 
-// FIXME:
-// - The ActionSheet when tapping an Ingredient in EditMode does crash the app due to an unknown location
-//   Using an Alert for now
-
 struct IngredientRow: View {
     /// The width of the HStack containing the amount and the unit text / fields
     let amountUnitWidth: CGFloat = 160
@@ -32,7 +28,7 @@ struct IngredientRow: View {
     
     var body: some View {
         HStack {
-            if self.editMode!.wrappedValue.isEditing {
+            if self.editMode?.wrappedValue.isEditing ?? false {
                 // Unit and amount
                 HStack {
                     TextField("", text: $editingAmount, onEditingChanged: { stillEditing in
@@ -57,7 +53,6 @@ struct IngredientRow: View {
                         .onAppear(perform: self.didEnterEditMode)
                     // Buttons do not work in a list in edit mode
                     Text(self.ingredient.unit.humanReadable(self.ingredient.amount))
-                        // FIXME: Error when showing action sheet: Missing location, using an alert instead, for now
                         .popover(isPresented: self.$showingUnitPicker, arrowEdge: .trailing) {
                             PropertySelectionView(property: self.$ingredient.unit, values: JFUnit.allCases, title: "Select Unit") { unit in
                                 unit.humanReadable.plural

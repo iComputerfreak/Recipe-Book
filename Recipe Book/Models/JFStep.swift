@@ -7,3 +7,18 @@
 //
 
 import Foundation
+
+struct JFStep: Codable, Equatable, Hashable, Identifiable {
+    
+    let id: UUID = UUID()
+    var description: String
+    
+    init() {
+        self.init("")
+    }
+    
+    init(_ description: String) {
+        self.description = description
+    }
+    
+}

@@ -22,9 +22,12 @@ struct StepEditingView: View {
         HStack {
             // Description
             HStack {
-                Text(description)
+                //TextView(text: $description)
+                TextField("", text: $description)
                     .padding(8)
                     .frame(minHeight: 35)
+                    .frame(width: 200)
+                    .lineLimit(10)
                 // Expand the background to the whole width
                 Spacer()
             }
@@ -36,6 +39,13 @@ struct StepEditingView: View {
 
 struct StepEditingView_Previews: PreviewProvider {
     static var previews: some View {
-        StepEditingView(description: .constant("Lorem ipsum"))
+        Group {
+            StepEditingView(description: .constant("Lorem ipsum"))
+                .previewLayout(.fixed(width: 600, height: 200))
+            StepsView()
+                .environmentObject(Placeholder.sampleRecipes.first!)
+                .environment(\.editMode, .constant(.active))
+                .previewLayout(.fixed(width: 500, height: 600))
+        }
     }
 }

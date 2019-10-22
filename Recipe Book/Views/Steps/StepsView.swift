@@ -21,17 +21,13 @@ struct StepsView: View {
             Divider()
             List {
                 // Steps
-                // Pair the steps with their indices [(0, "Step 1"), (1, "Step 2"), ...] and use the index as key
-                // This way we can allow equal steps (e.g. when adding 2 steps, both are "") and still get the index
-                // FIXME: Cannot use index as key
-                ForEach(Array(self.recipe.steps.enumerated()), id: \.0.self) { (data: (index: Int, step: String)) in
+                // Pair the steps with their indices [(0, "Step 1"), (1, "Step 2"), ...]
+                ForEach(Array(self.recipe.steps.enumerated()), id: \.1) { (index, _) in
                     HStack(alignment: .top) {
-                        if (self.editMode!.wrappedValue.isEditing) {
-                            // FIXME: Change to editable
-                            //self.stepEditingView(i)
-                            StepView(index: data.index, description: self.$recipe.steps[data.index])
+                        if (self.editMode?.wrappedValue.isEditing ?? false) {
+                            StepEditingView(description: self.$recipe.steps[index].description)
                         } else {
-                            StepView(index: data.index, description: self.$recipe.steps[data.index])
+                            StepView(index: index, description: self.$recipe.steps[index].description)
                         }
                     }
                 }
@@ -43,10 +39,10 @@ struct StepsView: View {
                     })
             }
             // Add Step
-            if self.editMode!.wrappedValue.isEditing {
+            if self.editMode?.wrappedValue.isEditing ?? false {
                 Button(action: {
                     print("Adding step")
-                    self.recipe.steps.append("")
+                    self.recipe.steps.append(JFStep())
                 }, label: {
                     HStack {
                         Spacer()
@@ -56,6 +52,8 @@ struct StepsView: View {
                     }
                 })
             }
+            // Push the button directly under the list
+            Spacer()
         }
     }
 }
