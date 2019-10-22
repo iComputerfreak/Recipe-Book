@@ -37,13 +37,13 @@ class JFRecipe: Identifiable, Codable, ObservableObject {
     @Published var ingredients: [JFIngredient]
     
     @Published var portionAmount: Int
-    @Published var portionType: JFPortionType
+    @Published var portionType: JFPortion
     
     convenience init() {
         self.init(name: "", image: nil, steps: [], ingredients: [], portionAmount: 1, portionType: .serving)
     }
     
-    init(name: String, image: UIImage?, steps: [String], ingredients: [JFIngredient], portionAmount: Int, portionType: JFPortionType, recipeID: UUID = UUID(), category: String? = nil, tags: [String] = []) {
+    init(name: String, image: UIImage?, steps: [String], ingredients: [JFIngredient], portionAmount: Int, portionType: JFPortion, recipeID: UUID = UUID(), category: String? = nil, tags: [String] = []) {
         self.name = name
         self.image = image
         self.steps = steps
@@ -78,7 +78,7 @@ class JFRecipe: Identifiable, Codable, ObservableObject {
         self.steps = try container.decode([String].self, forKey: .steps)
         self.ingredients = try container.decode([JFIngredient].self, forKey: .ingredients)
         self.portionAmount = try container.decode(Int.self, forKey: .portionAmount)
-        self.portionType = try container.decode(JFPortionType.self, forKey: .portionType)
+        self.portionType = try container.decode(JFPortion.self, forKey: .portionType)
         self.category = try container.decode(String?.self, forKey: .category)
         self.tags = try container.decode([String].self, forKey: .tags)
         

@@ -59,7 +59,7 @@ struct IngredientRow: View {
                     Text(self.ingredient.unit.humanReadable(self.ingredient.amount))
                         // FIXME: Error when showing action sheet: Missing location, using an alert instead, for now
                         .popover(isPresented: self.$showingUnitPicker, arrowEdge: .trailing) {
-                            PropertySelectionView(property: self.$ingredient.unit, values: JFUnitType.allCases, title: "Select Unit") { unit in
+                            PropertySelectionView(property: self.$ingredient.unit, values: JFUnit.allCases, title: "Select Unit") { unit in
                                 unit.humanReadable.plural
                             }
                     }

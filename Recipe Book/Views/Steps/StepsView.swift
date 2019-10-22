@@ -58,17 +58,6 @@ struct StepsView: View {
             }
         }
     }
-    
-    /// The description part of the step row while in editing mode
-    func stepEditingView(_ i: Int) -> some View {
-        // TODO: Replace TextView with TextField.lineLimit(), after it has been fixed, or TextView been implemented
-        //        TextField("", text: self.$steps[i], onEditingChanged: { _ in }) {
-        //            // Commit
-        //            self.commitChanges()
-        //        }
-        //            .lineLimit(nil)
-        TextView(text: self.$recipe.steps[i])
-    }
 }
 
 struct StepsView_Previews: PreviewProvider {

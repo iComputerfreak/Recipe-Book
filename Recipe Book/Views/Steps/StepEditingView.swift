@@ -8,20 +8,18 @@
 
 import SwiftUI
 
-struct StepView: View {
+struct StepEditingView: View {
     
-    @State var index: Int
     @Binding var description: String
-    
+        
     var body: some View {
+        // TODO: Replace TextView with TextField.lineLimit(), after it has been fixed, or TextView been implemented
+        //        TextField("", text: self.$steps[i], onEditingChanged: { _ in }) {
+        //            // Commit
+        //            self.commitChanges()
+        //        }
+        //            .lineLimit(nil)
         HStack {
-            // Step Number
-            Text("\(index + 1)")
-                .font(.title)
-                .bold()
-                .underline()
-                .foregroundColor(Color("StepColor"))
-                .frame(width: 60, height: 35, alignment: .trailing)
             // Description
             HStack {
                 Text(description)
@@ -36,8 +34,8 @@ struct StepView: View {
     }
 }
 
-struct StepView_Previews: PreviewProvider {
+struct StepEditingView_Previews: PreviewProvider {
     static var previews: some View {
-        StepView(index: 0, description: .constant("Lorem ipsum"))
+        StepEditingView(description: .constant("Lorem ipsum"))
     }
 }

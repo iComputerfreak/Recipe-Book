@@ -1,5 +1,5 @@
 //
-//  JFUnitType.swift
+//  JFUnit.swift
 //  Recipe Book
 //
 //  Created by Jonas Frey on 25.03.19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum JFUnitType: String, CaseIterable, Codable, Equatable, Hashable {
+enum JFUnit: String, CaseIterable, Codable, Equatable, Hashable {
     case none
     case piece
     case kilogram

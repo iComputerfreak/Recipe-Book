@@ -33,13 +33,13 @@ struct JFUtils {
         return CGFloat(cellCount) * (cellHeight + (1/3) + 0.3)
     }
     
-    static func amountString(_ amount: Double, unitType: JFUnitType? = nil) -> String {
+    static func amountString(_ amount: Double, unitType: JFUnit? = nil) -> String {
         // TODO: Check if units exceed maximum (e.g. 1000 ml = 1 l)
         var amountStr = ""
         if amount != 0 {
             amountStr = amountFormatter.string(from: NSNumber(floatLiteral: amount))!
         }
-        if unitType != nil && unitType != JFUnitType.none {
+        if unitType != nil && unitType != JFUnit.none {
             // Only if the ingredients list shows "1", use the singular (e.g. 1.00001 would be displayed as "1" -> singular)
             // Empty amount (e.g. "Prise Salz" should also use the singular)
             amountStr += " " + unitType!.humanReadable(amount)
@@ -64,7 +64,7 @@ struct Placeholder {
         JFIngredient(amount: 100, unit: .gram, name: "Zucker"),
         JFIngredient(amount: 3, unit: .piece, name: "Eier"),
         JFIngredient(amount: 500, unit: .milliliter, name: "Milch"),
-        JFIngredient(amount: 0, unit: JFUnitType.none, name: "Salz")
+        JFIngredient(amount: 0, unit: JFUnit.none, name: "Salz")
     ]
     
     static var sampleSteps: [String] = [

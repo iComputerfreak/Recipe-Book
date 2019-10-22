@@ -1,5 +1,5 @@
 //
-//  JFPortionType.swift
+//  JFPortion.swift
 //  Recipe Book
 //
 //  Created by Jonas Frey on 24.03.19.
@@ -9,7 +9,7 @@
 import Foundation
 
 /// Represents a type of portion unit
-enum JFPortionType: String, CaseIterable, Codable, Equatable, Hashable {
+enum JFPortion: String, CaseIterable, Codable, Equatable, Hashable {
     case serving
     case piece
     case person

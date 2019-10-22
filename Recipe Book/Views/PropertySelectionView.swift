@@ -47,7 +47,7 @@ struct PropertySelectionView<T: Hashable>: View {
 
 struct UnitSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        PropertySelectionView(property: .constant(Placeholder.sampleIngredients.first!.unit), values: JFUnitType.allCases, title: "Select Unit", label: { $0.humanReadable.plural })
+        PropertySelectionView(property: .constant(Placeholder.sampleIngredients.first!.unit), values: JFUnit.allCases, title: "Select Unit", label: { $0.humanReadable.plural })
             .previewLayout(.fixed(width: 300, height: 600))
     }
 }
