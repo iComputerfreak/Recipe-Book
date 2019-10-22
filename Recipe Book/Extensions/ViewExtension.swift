@@ -37,6 +37,12 @@ extension View {
         }
     }
     
+    /// Hides a view conditionally
+    /// - Parameter condition: Whether the view should be hidden or not.
+    public func hidden(_ condition: Bool) -> some View {
+        return condition ? AnyView(self.hidden()) : AnyView(self)
+    }
+    
 }
 
 extension Image {

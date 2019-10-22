@@ -43,6 +43,9 @@ enum JFPortionType: String, CaseIterable, Codable, Equatable, Hashable {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = digits
         let amountStr = formatter.string(from: NSNumber(floatLiteral: amount))!
-        return amountStr == "1" ? self.humanReadable.singular : self.humanReadable.plural
+        if amountStr == "0" || amountStr == "1" {
+            return self.humanReadable.singular
+        }
+        return self.humanReadable.plural
     }
 }

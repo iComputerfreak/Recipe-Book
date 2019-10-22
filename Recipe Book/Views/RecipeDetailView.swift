@@ -84,7 +84,16 @@ struct RecipeDetailView: View {
         }
             
         .navigationBarTitle(/*"\(self.recipe.name)"*/ "", displayMode: .inline)
-        .navigationBarItems(trailing: EditButton())
+            // TODO: Check if EditButton changes the environment variable correctly
+        .navigationBarItems(trailing: JFEditButton() { newState in
+            if newState == .active {
+                // Just entered edit mode
+            } else {
+                // Just left edit mode
+                // Remove the empty ingredients
+                self.recipe.ingredients.removeAll { $0.name.isEmpty && $0.amount.isZero && $0.unit == .none }
+            }
+        }) // TODO: Maybe insert self.editMode into JFEditButton
         .onAppear(perform: self.onAppear)
         // Hide the back button while editing
         .navigationBarBackButtonHidden(self.editMode!.wrappedValue.isEditing)

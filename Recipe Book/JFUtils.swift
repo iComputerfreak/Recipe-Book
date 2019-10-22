@@ -11,6 +11,13 @@ import UIKit
 import SwiftUI
 
 struct JFUtils {
+    
+    static var amountFormatter: NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 2
+        return formatter
+    }
+    
     static func randomColor() -> Color {
         return Color(red: Double.random(in: 0...1), green: Double.random(in: 0...1), blue: Double.random(in: 0...1))
     }
@@ -24,6 +31,20 @@ struct JFUtils {
         // FIXME: Formula still not exact
         // Currently works for up to 30 ingredients
         return CGFloat(cellCount) * (cellHeight + (1/3) + 0.3)
+    }
+    
+    static func amountString(_ amount: Double, unitType: JFUnitType? = nil) -> String {
+        // TODO: Check if units exceed maximum (e.g. 1000 ml = 1 l)
+        var amountStr = ""
+        if amount != 0 {
+            amountStr = amountFormatter.string(from: NSNumber(floatLiteral: amount))!
+        }
+        if unitType != nil && unitType != JFUnitType.none {
+            // Only if the ingredients list shows "1", use the singular (e.g. 1.00001 would be displayed as "1" -> singular)
+            // Empty amount (e.g. "Prise Salz" should also use the singular)
+            amountStr += " " + unitType!.humanReadable(amount)
+        }
+        return amountStr
     }
 }
 
@@ -79,4 +100,8 @@ extension Array {
     }
 }
 
-
+extension NumberFormatter {
+    func string(from doubleValue: Double) -> String? {
+        return self.string(from: NSNumber(floatLiteral: doubleValue))
+    }
+}

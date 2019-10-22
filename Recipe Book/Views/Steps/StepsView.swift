@@ -22,29 +22,16 @@ struct StepsView: View {
             List {
                 // Steps
                 // Pair the steps with their indices [(0, "Step 1"), (1, "Step 2"), ...] and use the index as key
-                // This way we can allow equal steps (e.g. when adding 2 steps, both are "") and still can get the index
+                // This way we can allow equal steps (e.g. when adding 2 steps, both are "") and still get the index
+                // FIXME: Cannot use index as key
                 ForEach(Array(self.recipe.steps.enumerated()), id: \.0.self) { (data: (index: Int, step: String)) in
                     HStack(alignment: .top) {
-                        // Step Number
-                        if !self.editMode!.wrappedValue.isEditing {
-                            Text("\(data.index + 1)")
-                                .font(.title)
-                                .bold()
-                                .underline()
-                                .foregroundColor(Color("StepColor"))
-                                .frame(width: 60, height: 35, alignment: .trailing)
-                        }
-                        // Step description
                         if (self.editMode!.wrappedValue.isEditing) {
                             // FIXME: Change to editable
                             //self.stepEditingView(i)
-                            self.stepView(data.step)
-                                .background(Color("ListBackground"))
-                                .cornerRadius(5)
+                            StepView(index: data.index, description: self.$recipe.steps[data.index])
                         } else {
-                            self.stepView(data.step)
-                                .background(Color("ListBackground"))
-                                .cornerRadius(5)
+                            StepView(index: data.index, description: self.$recipe.steps[data.index])
                         }
                     }
                 }
@@ -69,18 +56,6 @@ struct StepsView: View {
                     }
                 })
             }
-        }
-    }
-    
-    // TODO: Maybe move those functions into separate View structs
-    /// The description part of the step row
-    func stepView(_ description: String) -> some View {
-        HStack {
-            Text(description)
-                .padding(8)
-                .frame(minHeight: 35)
-            // Expand the background to the whole width
-            Spacer()
         }
     }
     

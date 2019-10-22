@@ -42,9 +42,9 @@ enum JFUnitType: String, CaseIterable, Codable, Equatable, Hashable {
         case .milliliter:
             return ("ml", "ml")
         case .tablespoon:
-            return ("tablespoon", "tablespoons")
+            return ("tbsp", "tbsp")
         case .teaspoon:
-            return ("teaspoon", "teaspoons")
+            return ("tsp", "tsp")
         case .stem:
             return ("stem", "stems")
         case .box:
@@ -79,6 +79,9 @@ enum JFUnitType: String, CaseIterable, Codable, Equatable, Hashable {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = digits
         let amountStr = formatter.string(from: NSNumber(floatLiteral: amount))!
-        return amountStr == "1" ? self.humanReadable.singular : self.humanReadable.plural
+        if amountStr == "0" || amountStr == "1" {
+            return self.humanReadable.singular
+        }
+        return self.humanReadable.plural
     }
 }
