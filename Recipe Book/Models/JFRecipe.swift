@@ -54,9 +54,9 @@ class JFRecipe: Identifiable, Codable, ObservableObject {
         self.tags = tags
         self.id = recipeID
     }
-    
+
     // MARK: - Codable
-    
+
     enum JFRecipeError: String, Error {
         case pngEncodingError = "Could not create PNG data from image"
     }

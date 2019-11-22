@@ -10,14 +10,16 @@ import Foundation
 import UIKit
 import SwiftUI
 
+/// Represents a Utility class
 struct JFUtils {
-    
+    /// Creates a formatter to convert the amount number into a human readable string
     static var amountFormatter: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.maximumFractionDigits = 2
         return formatter
     }
     
+    /// Returns a random `Color` instance
     static func randomColor() -> Color {
         return Color(red: Double.random(in: 0...1), green: Double.random(in: 0...1), blue: Double.random(in: 0...1))
     }
@@ -33,6 +35,10 @@ struct JFUtils {
         return CGFloat(cellCount) * (cellHeight + (1/3) + 0.3)
     }
     
+    /// Builds a string containing the amount and the unit formatted to be human readable
+    /// - Parameters:
+    ///   - amount: The amount of the ingredient
+    ///   - unitType: The unit of the ingredient
     static func amountString(_ amount: Double, unitType: JFUnit? = nil) -> String {
         // TODO: Check if units exceed maximum (e.g. 1000 ml = 1 l)
         var amountStr = ""
@@ -46,17 +52,24 @@ struct JFUtils {
         }
         return amountStr
     }
+    
+    /// Returns either black or white, depending on the color scheme
+    /// - Parameter colorScheme: The current color scheme environment variable
+    static func primaryUIColor(_ colorScheme: ColorScheme) -> UIColor {
+        return colorScheme == .light ? .black : .white
+    }
 }
 
-struct JFLiterals {    
-    static let textFont = UIFont(name: "Avenir Next", size: 16)
-    
-    static let editingViewNibName = "EditingRecipeView"
-    
+struct JFLiterals {
+    /// The symbol representing that no unit has been selected for this ingredient
     static let noUnit = "-"
     
+    struct Keys {
+        static let recipes = "recipes"
+    }
 }
 
+/// Represents some sample data, used for testing
 struct Placeholder {
     
     static var sampleIngredients: [JFIngredient] = [
@@ -78,7 +91,6 @@ struct Placeholder {
         JFRecipe(name: "Himbeerkuchen", image: UIImage(named: "Himbeerkuchen"), steps: sampleSteps, ingredients: sampleIngredients.repeated(n: 10), portionAmount: 1, portionType: .piece),
         JFRecipe(name: "Cookies", image: UIImage(named: "Cookies"), steps: sampleSteps.repeated(n: 10), ingredients: sampleIngredients, portionAmount: 1, portionType: .piece),
     ]
-    
 }
 
 extension Array {
@@ -101,6 +113,8 @@ extension Array {
 }
 
 extension NumberFormatter {
+    /// Adds a convenience method to the number formatter to return a string from a double value
+    /// - Parameter doubleValue: The value
     func string(from doubleValue: Double) -> String? {
         return self.string(from: NSNumber(floatLiteral: doubleValue))
     }

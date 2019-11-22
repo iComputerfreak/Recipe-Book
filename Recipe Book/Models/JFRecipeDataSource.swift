@@ -9,15 +9,20 @@
 import Foundation
 import UIKit
 
+/// Represents a data source for recipes
 class JFRecipeDataSource: NSObject, ObservableObject {
     
     typealias FilterType = (JFRecipe) -> Bool
-    let kRecipeListKey = "recipes"
     
+    /// The raw list of recipes
     @Published var recipes = [JFRecipe]()
+    /// The current filter
     @Published var filter: FilterType?
+    /// Whether the recipes should be returned sorted when accessing them through `filteredRecipes`
     @Published var isSorted: Bool = true
     
+    /// Returns all recipes that match the `filter`.
+    /// If `isSorted` is true, the array returned will be sorted lexicographically.
     var filteredRecipes: [JFRecipe] {
         var sortedRecipes = recipes
         
@@ -45,32 +50,32 @@ class JFRecipeDataSource: NSObject, ObservableObject {
         saveRecipes()
     }
     
+    /// Creates a filter that matches all recipe names against the given text.
+    /// - Parameter searchText: The text to match the recipe names against
     static func createSearchTextFilter(_ searchText: String) -> FilterType {
-        func filter(recipe: JFRecipe) -> Bool {
+        return { (recipe: JFRecipe) in
             return recipe.name.contains(searchText)
         }
-        return filter(recipe:)
     }
     
+    /// Loads the saved recipes from disk
     func loadRecipes() {
-        if let data = UserDefaults.standard.value(forKey: kRecipeListKey) as? Data {
-            let loadedRecipes = try? PropertyListDecoder().decode([JFRecipe].self, from: data)
-            recipes = loadedRecipes ?? [JFRecipe]()
-            print("Loaded \(recipes.count) recipes")
+        recipes = []
+        if let data = UserDefaults.standard.value(forKey: JFLiterals.Keys.recipes) as? Data {
+            if let loadedRecipes = try? PropertyListDecoder().decode([JFRecipe].self, from: data) {
+                recipes = loadedRecipes
+                print("Loaded \(recipes.count) recipes")
+            }
         } else {
             print("Data is nil")
-            // TODO: Remove this debug statement
-            recipes = Placeholder.sampleRecipes
         }
-        // TODO: REMOVE THIS
-        print("Overwriting with sample recipes")
-        recipes = Placeholder.sampleRecipes.repeated(n: 10)
     }
     
+    /// Saves the recipes to disk
     func saveRecipes() {
         do {
             let data = try PropertyListEncoder().encode(recipes)
-            UserDefaults.standard.set(data, forKey: kRecipeListKey)
+            UserDefaults.standard.set(data, forKey: JFLiterals.Keys.recipes)
         } catch let e {
             print(e)
         }

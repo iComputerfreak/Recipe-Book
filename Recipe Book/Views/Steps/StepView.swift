@@ -11,7 +11,7 @@ import SwiftUI
 struct StepView: View {
     
     @State var index: Int
-    @Binding var description: String
+    @State var description: String
     
     var body: some View {
         HStack {
@@ -41,6 +41,6 @@ struct StepView: View {
 
 struct StepView_Previews: PreviewProvider {
     static var previews: some View {
-        StepView(index: 0, description: .constant("Lorem ipsum"))
+        StepView(index: 0, description: "Lorem ipsum")
     }
 }

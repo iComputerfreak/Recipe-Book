@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Represents a type of ingredient unit
 enum JFUnit: String, CaseIterable, Codable, Equatable, Hashable {
     case none
     case piece

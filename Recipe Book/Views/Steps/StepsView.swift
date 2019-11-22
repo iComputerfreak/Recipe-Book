@@ -21,16 +21,18 @@ struct StepsView: View {
             Divider()
             List {
                 // Steps
-                // Pair the steps with their indices [(0, "Step 1"), (1, "Step 2"), ...]
-                ForEach(Array(self.recipe.steps.enumerated()), id: \.1) { (index, _) in
+                // Pair the steps with their indices [(0, JFStep), (1, JFStep), ...]
+                // IMPORTANT: Use .id instead of the hashsum, otherwise the views get fully re-rendered at every step text change!
+                ForEach(Array(self.recipe.steps.enumerated()), id: \.1.id) { (index, step) in
                     HStack(alignment: .top) {
                         if (self.editMode?.wrappedValue.isEditing ?? false) {
                             StepEditingView(description: self.$recipe.steps[index].description)
                         } else {
-                            StepView(index: index, description: self.$recipe.steps[index].description)
+                            StepView(index: index, description: step.description)
                         }
                     }
                 }
+                    
                 .onDelete(perform: { indexSet in
                     self.recipe.steps.remove(atOffsets: indexSet)
                 })
@@ -42,6 +44,7 @@ struct StepsView: View {
             if self.editMode?.wrappedValue.isEditing ?? false {
                 Button(action: {
                     print("Adding step")
+                    // FIXME: Static ID
                     self.recipe.steps.append(JFStep())
                 }, label: {
                     HStack {
@@ -60,8 +63,15 @@ struct StepsView: View {
 
 struct StepsView_Previews: PreviewProvider {
     static var previews: some View {
-        StepsView()
-            .previewLayout(.fixed(width: 400, height: 600))
-            .environmentObject(Placeholder.sampleRecipes.first!)
+        Group {
+            StepsView()
+                .previewLayout(.fixed(width: 400, height: 600))
+                .environmentObject(Placeholder.sampleRecipes.first!)
+
+            StepsView()
+                .previewLayout(.fixed(width: 400, height: 600))
+                .environmentObject(Placeholder.sampleRecipes.first!)
+                .environment(\.editMode, .constant(.active))
+        }
     }
 }

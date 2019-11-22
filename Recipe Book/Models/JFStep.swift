@@ -8,9 +8,11 @@
 
 import Foundation
 
+/// Represents a uniquely identifiable recipe description step
 struct JFStep: Codable, Equatable, Hashable, Identifiable {
     
     let id: UUID = UUID()
+    /// The description text of the step
     var description: String
     
     init() {

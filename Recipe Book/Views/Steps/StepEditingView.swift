@@ -10,30 +10,17 @@ import SwiftUI
 
 struct StepEditingView: View {
     
+    @Environment(\.colorScheme) private var colorScheme
     @Binding var description: String
-        
+    @State private var isEditing: Bool = false
+    
     var body: some View {
-        // TODO: Replace TextView with TextField.lineLimit(), after it has been fixed, or TextView been implemented
-        //        TextField("", text: self.$steps[i], onEditingChanged: { _ in }) {
-        //            // Commit
-        //            self.commitChanges()
-        //        }
-        //            .lineLimit(nil)
-        HStack {
-            // Description
-            HStack {
-                //TextView(text: $description)
-                TextField("", text: $description)
-                    .padding(8)
-                    .frame(minHeight: 35)
-                    .frame(width: 200)
-                    .lineLimit(10)
-                // Expand the background to the whole width
-                Spacer()
-            }
+        TextView(text: $description, isEditing: $isEditing, textColor: JFUtils.primaryUIColor(colorScheme), backgroundColor: .clear, contentType: nil, autocorrection: .yes, autocapitalization: .sentences, isScrollingEnabled: true)
+            // FIXME: Currently using a fixed height, because other ways don't work
+            .frame(height: 200)
+            .padding(4)
             .background(Color("ListBackground"))
             .cornerRadius(5)
-        }
     }
 }
 

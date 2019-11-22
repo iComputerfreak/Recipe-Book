@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Represents an ingredient in a recipe
+/// Represents a uniquely identifiable ingredient in a recipe
 struct JFIngredient: Codable, Equatable, Hashable, Identifiable {
     
     let id: UUID = UUID()

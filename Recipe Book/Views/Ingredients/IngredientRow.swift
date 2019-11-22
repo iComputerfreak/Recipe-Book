@@ -14,16 +14,18 @@ struct IngredientRow: View {
     
     @Binding var ingredient: JFIngredient
     @Binding var portionAmount: Int
+    @Binding var portionAmountOffset: Int
     
     @State private var showingUnitPicker: Bool = false
     @State private var editingAmount: String
     
     @Environment(\.editMode) private var editMode
     
-    init(ingredient: Binding<JFIngredient>, portionAmount: Binding<Int>) {
+    init(ingredient: Binding<JFIngredient>, portionAmount: Binding<Int>, portionAmountOffset: Binding<Int>) {
         self._ingredient = ingredient
-        self._portionAmount = portionAmount
         self._editingAmount = State(wrappedValue: JFUtils.amountFormatter.string(from: ingredient.wrappedValue.amount) ?? "0")
+        self._portionAmount = portionAmount
+        self._portionAmountOffset = portionAmountOffset
     }
     
     var body: some View {
@@ -77,7 +79,7 @@ struct IngredientRow: View {
                     // Padding to the unit button
                     .padding(.leading, 4)
             } else {
-                Text(JFUtils.amountString(ingredient.amount * Double(portionAmount), unitType: ingredient.unit))
+                Text(JFUtils.amountString(ingredient.amount * Double(portionAmount + portionAmountOffset), unitType: ingredient.unit))
                     .frame(width: amountUnitWidth, alignment: .trailing)
                 Text(ingredient.name)
                 Spacer()
@@ -94,8 +96,8 @@ struct IngredientRow: View {
 struct IngredientRow_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 0) {
-            IngredientRow(ingredient: .constant(Placeholder.sampleIngredients[0]), portionAmount: .constant(1))
-            IngredientRow(ingredient: .constant(Placeholder.sampleIngredients[1]), portionAmount: .constant(1))
+            IngredientRow(ingredient: .constant(Placeholder.sampleIngredients[0]), portionAmount: .constant(1), portionAmountOffset: .constant(2))
+            IngredientRow(ingredient: .constant(Placeholder.sampleIngredients[1]), portionAmount: .constant(1), portionAmountOffset: .constant(0))
                 .environment(\.editMode, .constant(.active))
         }
         .previewLayout(.fixed(width: 400, height: 56))

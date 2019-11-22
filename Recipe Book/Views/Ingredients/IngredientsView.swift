@@ -71,8 +71,8 @@ struct IngredientsView: View {
             }
             List {
                 // Map each ingredient to its index
-                ForEach(Array(self.recipe.ingredients.enumerated()), id: \.1) { (index, _) in
-                    IngredientRow(ingredient: self.$recipe.ingredients[index], portionAmount: self.$recipe.portionAmount)
+                ForEach(Array(self.recipe.ingredients.enumerated()), id: \.1.id) { (index, _) in
+                    IngredientRow(ingredient: self.$recipe.ingredients[index], portionAmount: self.$recipe.portionAmount, portionAmountOffset: self.$portionAmountOffset)
                         // Pass the edit mode down to the row
                         .environment(\.editMode, self.editMode)
                         .background(

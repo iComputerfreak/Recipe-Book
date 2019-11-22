@@ -13,11 +13,10 @@ struct RecipeDetailView: View {
     
     /*
      Current Workarounds:
-     * Editing Steps (no TextView or multiline TextField)
+     * Editing Steps use a fixed height
      * Custom EditButton to execute code on editMode change
      * Calculating ingredients List size and setting it manually (instead of letting the List grow as it needs to)
      * Using Popover instead of ActionSheet (maybe can be left like this)
-     
      */
     
     /*
@@ -25,16 +24,13 @@ struct RecipeDetailView: View {
      * Recipe Unit is using onTapGesture instead of Button, because it's in a List
      * Recipe Unit "Button" is registering presses that are a bit more far away (e.g. when tapping the amount field)
      * Add Step Button is pushed down because the List is expanding
-     
      */
     
     /*
      TODO:
      * Save images in separate directory (or better into CoreData/iCloud Data)
-     * Create StepEditingView
      * Convert Units to match the highest one
      * Highlight ingredients in step descriptions
-     
      */
     
     @EnvironmentObject private var recipe: JFRecipe
@@ -124,8 +120,13 @@ struct RecipeDetailView: View {
 
 struct RecipeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeDetailView()
-            .environmentObject(Placeholder.sampleRecipes.first!)
-        //.previewLayout(.fixed(width: 1112, height: 834))
+        Group {
+            RecipeDetailView()
+                .environmentObject(Placeholder.sampleRecipes.first!)
+            
+            RecipeDetailView()
+                .environmentObject(Placeholder.sampleRecipes.first!)
+                .environment(\.editMode, .constant(.active))
+        }
     }
 }
